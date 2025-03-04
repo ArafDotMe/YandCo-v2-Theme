@@ -1,1 +1,137 @@
-{"type":"header","name":"Header Group","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"84580932-62f5-4d96-adc1-6289a349d970":{"type":"text","settings":{"title":"10% Discount on Boys Clothing"}},"6b9b2332-efc9-4863-b58f-3df878f30aa3":{"type":"text","settings":{"title":"15% Discount on Girls Clothing"}}},"block_order":["84580932-62f5-4d96-adc1-6289a349d970","6b9b2332-efc9-4863-b58f-3df878f30aa3"],"disabled":true,"settings":{"color":"#000000","background":"#ffffff","font_size":14,"font_size_mobile":14,"disable_slider_desktop":false,"arrows":true,"autoplay":true,"interval":5,"closing_button":"enable"}},"header":{"type":"header-v2","blocks":{"menu_TX3cbH":{"type":"menu","settings":{"handle":"Boys","image_1":"shopify:\/\/shop_images\/723x290-boy.jpg","card_title_1":"Polo","card_subtitle_1":"Subtitle","link_1":"shopify:\/\/collections\/boys","image_2":"shopify:\/\/shop_images\/nb2.jpg","card_title_2":"Hoodie","card_subtitle_2":"Subtitle","link_2":"shopify:\/\/collections\/boys","image_3":"shopify:\/\/shop_images\/imgpsh_fullsize_anim_e417e2ab-d535-40d5-b6ab-0e76e4da1b80.jpg","card_title_3":"Shirt","card_subtitle_3":"Subtitle","link_3":"shopify:\/\/collections\/boys-tops"}},"menu_DXnaf3":{"type":"menu","settings":{"handle":"Girls","image_1":"shopify:\/\/shop_images\/1446x250-girl.jpg","card_title_1":"Title","card_subtitle_1":"Subtitle","link_1":"shopify:\/\/collections\/girls","image_2":"shopify:\/\/shop_images\/ng2.jpg","card_title_2":"Title","card_subtitle_2":"Subtitle","link_2":"shopify:\/\/collections\/girls-tops","image_3":"shopify:\/\/shop_images\/ng4.jpg","card_title_3":"Title","card_subtitle_3":"Subtitle","link_3":"shopify:\/\/collections\/girls"}}},"block_order":["menu_TX3cbH","menu_DXnaf3"],"settings":{"background_header":"#f7f7f7","color_header":"#08080f","products_counter_color":"#ffffff","products_counter_background":"#000000","enable_header_full_width":false,"enable_mega_menu_full_width":false,"enable_scroll":true,"products_counter":false,"enable_utils_text":true,"logo":"shopify:\/\/shop_images\/logo.svg","logo_svg":"","logo_position":"center","logo_width_desktop":110,"logo_width_mobile":140,"menu":"main-menu","menu_secondary":"footer","enable_transparent":false,"color_header_transparent":"#ffffff","logo_svg_transparent":""}},"carousel_v2_qTaP9n":{"type":"carousel-v2","blocks":{"slide_tiDgiL":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/3840X1400-new-final-01_1a3cd787-953b-4947-a2dc-9c6810b46417.jpg","collectiom_url":""}},"slide_zeEUVj":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/1.jpg","collectiom_url":""}},"slide_KgdGni":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/2.jpg","collectiom_url":""}},"slide_iGHtqB":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/3.jpg","collectiom_url":""}},"slide_4kMnGH":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/4.jpg","collectiom_url":""}},"slide_6Uz7i6":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/5.jpg","collectiom_url":""}},"slide_7A6DQQ":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/6.jpg","collectiom_url":""}},"slide_qLyNCi":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/7.jpg","collectiom_url":""}},"slide_akHBFw":{"type":"slide","settings":{"image_desktop":"shopify:\/\/shop_images\/3840X1400-8.jpg","collectiom_url":""}}},"block_order":["slide_tiDgiL","slide_zeEUVj","slide_KgdGni","slide_iGHtqB","slide_4kMnGH","slide_6Uz7i6","slide_7A6DQQ","slide_qLyNCi","slide_akHBFw"],"settings":{}}},"order":["announcement-bar","header","carousel_v2_qTaP9n"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "84580932-62f5-4d96-adc1-6289a349d970": {
+          "type": "text",
+          "settings": {
+            "title": "10% Discount on Boys Clothing"
+          }
+        },
+        "6b9b2332-efc9-4863-b58f-3df878f30aa3": {
+          "type": "text",
+          "settings": {
+            "title": "15% Discount on Girls Clothing"
+          }
+        }
+      },
+      "block_order": [
+        "84580932-62f5-4d96-adc1-6289a349d970",
+        "6b9b2332-efc9-4863-b58f-3df878f30aa3"
+      ],
+      "disabled": true,
+      "settings": {
+        "color": "#000000",
+        "background": "#ffffff",
+        "font_size": 14,
+        "font_size_mobile": 14,
+        "disable_slider_desktop": false,
+        "arrows": true,
+        "autoplay": true,
+        "interval": 5,
+        "closing_button": "enable"
+      }
+    },
+    "header": {
+      "type": "header-v2",
+      "blocks": {
+        "menu_TX3cbH": {
+          "type": "menu",
+          "settings": {
+            "handle": "Boys",
+            "card_title_1": "Polo",
+            "card_subtitle_1": "Subtitle",
+            "link_1": "shopify://collections/boys",
+            "card_title_2": "Hoodie",
+            "card_subtitle_2": "Subtitle",
+            "link_2": "shopify://collections/boys",
+            "card_title_3": "Shirt",
+            "card_subtitle_3": "Subtitle",
+            "link_3": "shopify://collections/boys-tops"
+          }
+        },
+        "menu_DXnaf3": {
+          "type": "menu",
+          "settings": {
+            "handle": "Girls",
+            "card_title_1": "Title",
+            "card_subtitle_1": "Subtitle",
+            "link_1": "shopify://collections/girls",
+            "card_title_2": "Title",
+            "card_subtitle_2": "Subtitle",
+            "link_2": "shopify://collections/girls-tops",
+            "card_title_3": "Title",
+            "card_subtitle_3": "Subtitle",
+            "link_3": "shopify://collections/girls"
+          }
+        }
+      },
+      "block_order": [
+        "menu_TX3cbH",
+        "menu_DXnaf3"
+      ],
+      "settings": {
+        "background_header": "#f7f7f7",
+        "color_header": "#08080f",
+        "products_counter_color": "#ffffff",
+        "products_counter_background": "#000000",
+        "enable_header_full_width": false,
+        "enable_mega_menu_full_width": false,
+        "enable_scroll": true,
+        "products_counter": false,
+        "enable_utils_text": true,
+        "logo": "shopify://shop_images/logo.png",
+        "logo_svg": "",
+        "logo_position": "center",
+        "logo_width_desktop": 110,
+        "logo_width_mobile": 140,
+        "menu": "main-menu",
+        "menu_secondary": "footer",
+        "enable_transparent": false,
+        "color_header_transparent": "#ffffff",
+        "logo_svg_transparent": ""
+      }
+    },
+    "carousel_v2_qTaP9n": {
+      "type": "carousel-v2",
+      "blocks": {
+        "slide_tiDgiL": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/3840X1400-new-final-01.jpg",
+            "collectiom_url": ""
+          }
+        },
+        "slide_EMb9PY": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/3840X1400-new-final-02.jpg",
+            "collectiom_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_tiDgiL",
+        "slide_EMb9PY"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "carousel_v2_qTaP9n"
+  ]
+}
