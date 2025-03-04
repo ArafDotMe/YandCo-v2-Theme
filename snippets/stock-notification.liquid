@@ -1,0 +1,31 @@
+<div
+  data-purchase-options-notification
+  class="product__stock-notification araf"
+  id="Product-Stock-Notification-{{ section.id }}"
+>
+  {%- if current_variant.inventory_management != null
+    and current_variant.inventory_policy != 'continue'
+  -%}
+    {%- if current_variant.inventory_quantity <= 0 and current_variant.available -%}
+    {%- elsif current_variant.inventory_quantity != 0 -%}
+      <p class="product__stock-notification-text">
+        <span class="product__stock-notification-icon">{% render 'icon-box' %}</span>
+        
+        {%- assign half_inventory = current_variant.inventory_quantity | divided_by: 2.0 | ceil -%}
+        {{ 'products.product.stock_notification' | t: inventory: half_inventory }}
+      </p>
+      <!-- /.product__stock-notification-text -->
+
+      <div class="progress-bar">
+        <div class="progress-bar__progress">
+          {% comment %}<span class="progress-bar__progress-inner" style="width: {{ half_inventory | times: 100.0 | divided_by: block.threshold }}%;"></span>{% endcomment %}
+          <span class="progress-bar__progress-inner" style="width: {{ half_inventory }}%;"></span>
+          <!-- /.progress-bar__progress-inner -->
+        </div>
+        <!-- /.progress-bar__progress -->
+      </div>
+      <!-- /.progress-bar -->
+    {%- endif -%}
+  {%- endif -%}
+</div>
+<!-- /.product__stock-notification -->

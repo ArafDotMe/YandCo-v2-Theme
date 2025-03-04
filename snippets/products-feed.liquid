@@ -1,0 +1,94 @@
+
+{%-
+  liquid
+  assign is_odd_cards = _section.products_count_desktop | modulo: 2
+  assign is_focus = false
+  if _section.focus and is_odd_cards == 1
+    assign is_focus = true
+  endif
+-%}
+
+{% if section.settings.overwrite_colors %}
+  <style>
+    .section-products--{{ section.id }} {
+      --color: {{ section.settings.color }};
+      --background: {{ section.settings.background }};
+    }
+  </style>
+{% endif %}
+
+<section data-aos="fade-zoom-in" class="ARAF section-products section section-products--{{ section.id }}">
+  <div class="container {% if _section.enable_fullwidth %}container--fullwidth{% endif %}">
+    {% if _section.heading != blank %}
+      <div class="section__head section__head--{{ section.settings.horizontal_alignment }} {% if _section.arrows %}section__head--with-arrow{% endif %}">
+        {% if _section.pre_heading != blank %}
+          <h6 class="section__pre-heading">
+            {{ _section.pre_heading }}
+          </h6><!-- /.section__pre-heading -->
+        {% endif %}
+
+        <h2 class="section__heading {{ heading_size }}">
+          {{ _section.heading | newline_to_br }}
+        </h2><!-- /.section__heading -->
+
+        {% if _section.arrows %}
+          <div class="section__arrows swiper-arrows swiper-arrows--border">
+            <button data-arrow-prev class="swiper-arrow swiper-arrow--prev" prev aria-label="{{ 'accessibility.previous' | t }}">
+              {% render 'icon-arrow-slider' %}
+            </button>
+
+            <button data-arrow-next class="swiper-arrow swiper-arrow--next" next aria-label="{{ 'accessibility.next' | t }}">
+              {% render 'icon-arrow-slider' %}
+            </button>
+          </div><!-- /.section__arrows -->
+        {% endif %}
+      </div><!-- /.section__head -->
+    {% endif %}
+
+    <div class="section__body">
+      <products-carousel
+        id="slider-{{- section.id -}}"
+        class="swiper"
+        data-autoplay="{{ _section.autoplay }}",
+        data-autoplay-speed="{{ _section.autoplay_speed | times: 1000 }}"
+        data-slides-desktop="{{ _section.products_count_desktop }}"
+        data-slides-tablet="{{ _section.products_count_tablet }}"
+        data-slides-mobile="{{ _section.products_count_mobile }}"
+        data-arrows="{{ _section.arrows }}"
+        data-breakpoints
+      >
+        <ul class="
+          swiper-wrapper
+          list-unstyled
+          section__list
+          section__list--cards-{{ _section.products_count_desktop }}
+          section__list--cards-tablet-{{ _section.products_count_tablet }}
+          {% if settings.card_product_aspect_ratio_desktop != 'media--original' and is_focus %}section__list--focus{% endif %}
+        ">
+          {% for resource in resources limit: _section.products_limit %}
+            <li class="swiper-slide">
+              {%- render 'card-product' product_ref: resource -%} 
+            </li><!-- /.swiper-slide -->
+          {% endfor %}
+
+          {% if resources == blank %}
+            {% for i in (1.._section.products_count_desktop) %}
+              <li class="swiper-slide">
+                {% assign placeholder_image_handle = 'product-' | append: i %}
+                {%- render 'card-product', placeholder_image: placeholder_image_handle -%}
+              </li><!-- /.swiper-slide -->
+            {% endfor %}
+          {% endif %}
+        </ul><!-- /.swiper-wrapper -->
+      </products-carousel>
+    </div><!-- /.section__body -->
+
+    {% if _section.button_label != blank and _section.button_link != blank %}
+      <div class="section__foot">
+        <div class="section__actions section__actions--{{ section.settings.button_position }}">
+          <a href="{{	_section.button_link }}" class="button {{ _section.button_style }}">{{ _section.button_label }}</a>
+        </div><!-- /.section__actions -->
+      </div><!-- /.section__foot -->
+    {% endif %}
+  </div><!-- /.container -->
+</section><!-- /.section-products -->

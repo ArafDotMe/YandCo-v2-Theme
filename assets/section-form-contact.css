@@ -1,0 +1,222 @@
+.section-form-contact {
+  background-color: var(--background);
+}
+
+.section-form-contact form {
+  padding: 7.2rem 0 0rem;
+}
+
+@media (max-width: 767px) {
+  .section-form-contact {
+    padding-bottom: 2rem;
+  }
+
+  .section-form-contact form {
+    padding: 4.6rem 1.6rem 0;
+  }
+}
+
+.section-form-contact .section__container {
+  max-width: 80rem;
+}
+
+.section-form-contact .form-row {
+  gap: 3.2rem;
+}
+
+@media (max-width: 767px) {
+  .section-form-contact .form-row {
+    gap: 2.1rem;
+  }
+}
+
+.section-form-contact .form-row + .form-row {
+  margin-top: 2.9rem;
+}
+
+.section-form-contact .field__input {
+  height: 5.6rem;
+  padding: 2rem;
+  background-color: var(--color-form-input-background);
+}
+
+.section-form-contact .field--textarea .field__input {
+  height: 22.5rem;
+}
+
+.section-form-contact button[type=submit] {
+    height: 5.6rem;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+.section-form-contact button[type=submit]:hover {
+  border-color: inherit;
+}
+
+.section-form-contact .section__list {
+  display: flex;
+  gap: 3.2rem;
+  padding: 8rem 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (max-width: 767px) {
+  .section-form-contact .section__list {
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 6.2rem 0 0;
+  }
+}
+
+.section-form-contact .section__list li {
+  width: 50%;
+  background-color: var(--background-block);
+  color: var(--color-block);
+  padding: 3.2rem;
+  border-radius: var(--border-radius);
+}
+
+@media (max-width: 767px) {
+  .section-form-contact .section__list li {
+    width: 100%;
+  }
+}
+
+.section-form-contact .section__list h3,
+.section-form-contact .section__list h5,
+.section-form-contact .section__list p {
+  margin: 0;
+  color: var(--color-block);
+}
+
+.section-form-contact .section__list i {
+  display: inline-flex;
+}
+
+.section-form-contact .section__list h3 {
+  font-size: 2.4rem;
+  margin-bottom: 1.3rem;
+}
+
+.section-form-contact .section__block-phone p,
+.section-form-contact .section__block-email p,
+.section-form-contact .section__block-address p {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+}
+
+.section-form-contact .section__block p a {
+  text-decoration: none;
+}
+
+.section-form-contact .section__block p a:hover {
+  text-decoration: underline;
+}
+
+.section-form-contact .section__block-phone {
+  padding-top: 0.6rem;
+}
+
+.section-form-contact .section__block-entry {
+  margin-top: 3rem;
+}
+
+.section-form-contact .section__list h5 {
+  margin-bottom: 1.1rem;
+}
+
+.section-form-contact .section__block-address {
+  margin-top: 2.1rem;
+}
+
+
+.section__contact-box {
+  background-color: #F7F8F9;
+  padding: 52px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+@media only screen and (max-width: 575px) {
+  .section__contact-box {
+    padding: 30px;
+  }
+}
+
+.section__contact-box--heading {
+  color: rgba(0, 0, 0, 0.80);
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.75px;
+  margin:0;
+}
+
+@media only screen and (max-width: 575px) {
+  .section__contact-box--heading {
+    font-size: 20px;
+  }
+}
+
+.contact-box--row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact-box--col-1 {
+  width: 40%;
+}
+.contact-box--col-2 {
+  width: 60%;
+}
+
+@media only screen and (max-width: 575px) {
+  .contact-box--row > *{
+    padding-top: 20px
+  }
+  .contact-box--row > *:first-child {
+    padding-top: 0;
+  }
+  .contact-box--col-1 {
+    width: 100%;
+  }
+  .contact-box--col-2 {
+    width: 100%;
+  }
+}
+
+.contact-box--title {
+  color: rgba(0, 0, 0, 0.80);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.88px;
+  margin: 0;
+}
+
+.section__contact-box--text {
+  margin-top: 24px;
+}
+.section__contact-box--text:first-child{
+  margin-top: 0;
+}
+
+.section__contact-box--text P{
+  color: rgba(102, 102, 102, 0.90);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: .54px;
+  margin: 8px 0 0;
+}
+
+@media only screen and (max-width: 575px) {
+  .section__contact-box--text {
+    font-size: 16px;
+  }
+}
+
+
+

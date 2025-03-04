@@ -1,0 +1,306 @@
+{{- 'swiper-bundle.min.css' | asset_url | stylesheet_tag: preload: true -}}
+<style>
+.how-to-order-section {
+  padding: 100px 0;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .how-to-order-section {
+    padding: 80px 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .how-to-order-section {
+    padding: 60px 0;
+  }
+}
+
+.how-to-order-section .section-title {
+   margin-bottom: 50px;
+}
+  
+.pagination-count {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto 50px;
+  position: relative;
+  z-index: 1;
+  bottom: 0 !important;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-count {
+    max-width: 90%;
+    margin: 0 auto 30px;
+  }
+}
+.pagination-count::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #e0d5c6;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+.pagination-count .swiper-pagination-bullet {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  color: #666666;
+  border: 2px solid #e0d5c6;
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #fff;
+  opacity: 1;
+  margin: 0 0 !important;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .pagination-count .swiper-pagination-bullet {
+    padding: 8px 16px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .pagination-count .swiper-pagination-bullet {
+    padding: 6px 14px;
+    font-size: 15px;
+  }
+}
+.pagination-count .swiper-pagination-bullet-active {
+  background-color: #e0d5c6;
+}
+
+.how-to-order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: #f7f8f9;
+  padding-left: 120px;
+  padding-right: 80px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .how-to-order-row {
+    padding-left: 70px;
+    padding-right: 50px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .how-to-order-row {
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .how-to-order-row {
+    padding: 30px;
+  }
+}
+
+.how-to-order-content {
+  max-width: 460px;
+  padding-right: 15px;
+}
+.how-to-order-content--sub-title {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.23;
+  letter-spacing: 0.03em;
+  color: #08080F;
+  margin-bottom: 150px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+  .how-to-order-content--sub-title {
+    margin-bottom: 60px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .how-to-order-content--sub-title {
+    margin-bottom: 60px;
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .how-to-order-content--sub-title {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .how-to-order-content--sub-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+}
+.how-to-order-content--title {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: #08080F;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (max-width: 767px) {
+  .how-to-order-content--title {
+    font-size: 32px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .how-to-order-content--title {
+    font-size: 24px;
+  }
+}
+.how-to-order-content ul {
+  list-style: circle;
+  padding-left: 18px;
+  padding-top: 10px;
+}
+.how-to-order-content ul li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  letter-spacing: 0.03em;
+  color: #08080F;
+  margin-top: 10px;
+}
+@media only screen and (max-width: 575px) {
+  .how-to-order-content ul li {
+    font-size: 15px;
+  }
+}
+.how-to-order-content p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  letter-spacing: 0.03em;
+  color: #08080F;
+  margin-top: 10px;
+}
+@media only screen and (max-width: 575px) {
+  .how-to-order-content p {
+    font-size: 15px;
+  }
+}
+
+.how-to-order-image {
+  padding-left: 15px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .how-to-order-image {
+    padding-left: 0;
+    padding-top: 30px;
+  }
+}
+.how-to-order-image img {
+  width: auto;
+  height: auto;
+}  
+
+
+[dir="rtl"] .how-to-order-content {
+    padding-right: 0;
+    padding-left: 15px;
+}
+
+[dir="rtl"] .how-to-order-image {
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+[dir="rtl"] .how-to-order-content ul {
+    padding-left: 0;
+    padding-right: 18px;
+}
+  
+  
+</style>
+
+<!-- How to Order Start -->
+<div class="how-to-order-section how-to-order-active">
+    <div class="container">
+        <!-- Section Title Start -->
+        <div class="section-title center section__head--center">
+            <h2 class="section-title-title">{{ page_title }}</h2>
+        </div>
+        <!-- Section Title End -->
+      
+        <div class="swiper">
+            <div class="pagination-count"></div>
+            <div class="swiper-wrapper">
+              
+              {% for block in section.blocks %}
+                <!-- How to Order Start -->
+                <div class="swiper-slide how-to-order-row">
+                    <!-- How to Order Content Start -->
+                    <div class="how-to-order-content">
+                        {% if block.settings.slider_title != blank %}
+                          <h3 class="how-to-order-content--sub-title">
+                              {{ block.settings.slider_title }}
+                          </h3>
+                        {% endif %}
+                        <h4 class="how-to-order-content--title">
+                            {{ block.settings.subtitle }}
+                        </h4>
+                        {{ block.settings.content }}
+                    </div>
+                    <!-- How to Order Content End -->
+
+                    <!-- How to Order Image Start -->
+                    <div class="how-to-order-image">
+                        <img src="{{ block.settings.image | img_url: 'original' }}" alt="{{ block.settings.title }}" width="" height="" />
+                    </div>
+                    <!-- How to Order Image End -->
+                </div>
+                <!-- How to Order Image End -->
+                {% endfor %}
+      
+            </div>
+        </div>
+    </div>
+</div>
+<!-- How to Order End -->
+
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script> 
+<script src="{{ 'how-to-order-v2.js' | asset_url }}" defer="defer"></script> 
+
+
+{% schema %}
+  {
+    "name": "How to Order v2",
+    "settings": [],
+    "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "slider_title",
+          "label": "Slider title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

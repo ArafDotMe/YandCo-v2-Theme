@@ -1,0 +1,97 @@
+{{- 'banners-double-v2.css' | asset_url | stylesheet_tag: preload: true -}}
+
+<!-- Banner Add Start -->
+<div class="banner-add-section" style="padding-top: {{ section.settings.space_top }}px; padding-bottom: {{ section.settings.space_bottom }}px;">
+    <div class="container">
+        <div class="banner-add-row">
+            <div class="banner-add-col-1">
+                <!-- Banner Add Item Start -->
+                <div class="banner-add-item">
+                    <a href="{{ section.settings.url_1 }}" class="medium-hide small-hide ">
+                      {{ section.settings.image_1_desktop | image_url: width: 831  | image_tag: class: '' }}
+                    </a>
+                    <a href="{{ section.settings.url_1 }}" class="large-up-hide">
+                      {{ section.settings.image_1_mobile | image_url: width: 831  | image_tag: class: '' }}
+                    </a>
+                </div>
+                <!-- Banner Add Item End -->
+            </div>
+            <div class="banner-add-col-2">
+                <!-- Banner Add Item Start -->
+                <div class="banner-add-item">
+                    <a href="{{ section.settings.url_2 }}" class="medium-hide small-hide ">
+                      {{ section.settings.image_2_desktop | image_url: width: 831  | image_tag: class: '' }}
+                    </a>
+                    <a href="{{ section.settings.url_2 }}" class="large-up-hide">
+                      {{ section.settings.image_2_mobile | image_url: width: 831  | image_tag: class: '' }}
+                    </a>
+                </div>
+                <!-- Banner Add Item End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Add End -->
+
+{% schema %}
+  {
+    "name": "Banners (Double) v2",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_1_desktop",
+        "label": "Image (1) - Desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1_mobile",
+        "label": "Image (1) - Mobile"
+      },
+      {
+        "type": "url",
+        "id": "url_1",
+        "label": "Image (1) Url"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2_desktop",
+        "label": "Image (2) - Desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2_mobile",
+        "label": "Image (2) - Mobile"
+      },
+      {
+        "type": "url",
+        "id": "url_2",
+        "label": "Image (2) Url"
+      },
+      {
+        "type": "range",
+        "id": "space_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Top Spacing",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "space_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Bottom Spacing",
+        "default": 0
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banners (Double) v2"
+      }
+    ]
+  }
+{% endschema %}

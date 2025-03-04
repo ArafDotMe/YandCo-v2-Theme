@@ -1,0 +1,126 @@
+.accordion-item {
+  display: block;
+  border: solid var(--color-form-input-border-light);
+  border-width: 0.1rem 0 0 0;
+  padding-top: 1.6rem;
+  color: var(--color, var(--color-base));
+}
+
+.accordion-item__title {
+  font-size: 16px;
+  position: relative;
+  font-weight: 700;
+  color: #333333;
+  word-break: break-word;
+  user-select: none;
+}
+
+.accordion-item__title span {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 5px;
+}
+.accordion-item__title span::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2px;
+    width: 12px;
+    background-color: #000;
+    transform: translate(-50%,-50%);
+}
+.accordion-item__title span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 12px;
+    width: 2px;
+    background-color: #000;
+    transform: translate(-50%,-50%);
+}
+.accordion-item details[is-open] span::after {
+    height: 0;
+}
+
+.accordion-item__content {
+  padding-top: 1.6rem;
+  color: #666;
+}
+
+@media (max-width: 767px) {
+  .accordion-item__content {
+    font-size: 1.4rem;
+  }
+}
+
+.accordion-item__content p {
+  margin: 0;
+}
+
+.accordion-item__content p + p {
+  margin-top: 2rem;
+}
+
+.accordion-item summary + * {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms;
+}
+
+.accordion-item .accordion-item__content > * {
+  overflow: hidden;
+}
+
+.accordion-item details[is-open] summary + * {
+  grid-template-rows: 1fr;
+  margin-bottom: 16px;
+}
+
+/* Accordion FAQ */
+
+.accordion-item--faq {
+  border: 1px solid #E6EAED;
+  border-radius: 50px;
+  padding: 20px 40px 4px;
+  margin-top: 1.8rem;
+  background-color: #F7F8F9;
+}
+
+@media (max-width: 767px) {
+  .accordion-item--faq {
+    padding: 2rem 2rem 1rem;
+  }
+}
+
+.accordion-item--faq .accordion-item__title {
+  font-size: 2rem;
+  padding-left: 40px;
+}
+
+@media (max-width: 767px) {
+  .accordion-item--faq .accordion-item__title {
+    font-size: 1.8rem;
+  }
+}
+
+.accordion-item--faq .accordion-item__content {
+  padding: 0;
+  margin: 1.6rem 0 0;
+}
+
+@media (max-width: 767px) {
+  .accordion-item--faq .accordion-item__content {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .accordion-item--faq details[is-open] summary + * {
+    margin-bottom: 1rem;
+  }
+}

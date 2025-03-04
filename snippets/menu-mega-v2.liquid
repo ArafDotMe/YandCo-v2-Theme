@@ -1,0 +1,58 @@
+<div class="menu-mega">
+  <div class="container {% if _settings.enable_mega_menu_full_width %}container--fullwidth{% endif %}">
+    <div class="menu__inner">
+      <div class="menu__list">
+        {% for link_2 in link.links %}
+
+          <nav class="menu__nav">
+            <h5 class="caption-ffb">
+              {% if link_2.url == '#' or link_2.url == blank %}
+                {{ link_2.title }}
+              {% else %}
+                <a href="{{ link_2.url }}">{{ link_2.title }}</a>
+              {% endif %}
+            </h5>
+
+            {% comment %}
+            <ul class="list-unstyled menu__links">
+               <li><a href="#">Tops</a></li>
+               <li><a href="#">Bottoms</a></li>
+               <li><a href="#">Sleepwear</a></li>
+               <li><a href="#">Innerwear</a></li>
+               <li><a href="#">Sets</a></li>
+            </ul><!-- /.menu__links -->
+            {% endcomment %}
+
+            {% if link_2.links.size > 0 %}
+              <ul class="list-unstyled menu__links">
+                {% for link_3 in link_2.links %}
+                  <li>
+                    <a href="{{ link_3.url }}">{{ link_3.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul><!-- /.menu__links -->
+            {% endif %}   
+
+          </nav><!-- /.menu__nav -->
+        {% endfor %}
+      </div><!-- /.menu__list -->
+
+      <div class="menu__card-list">
+          
+        {% comment %}<img src="{{ 'top_banner_test.jpg' | asset_url }}" height="" width="" alt="Example Image">{% endcomment %}
+        
+        {%-
+          liquid
+          for i in (1..1)
+            assign image_handle = 'image_' | append: i
+            assign title_handle = 'card_title_' | append: i
+            assign subtitle_handle = 'card_subtitle_' | append: i
+            assign link_handle = 'link_' | append: i
+
+            render 'menu-card-v2' image: block[image_handle], title: block[title_handle], subtitle: block[subtitle_handle], link: block[link_handle]
+          endfor
+        -%}
+      </div><!-- /.menu__card-list -->
+    </div><!-- /.menu__inner -->
+  </div><!-- /.container -->
+</div><!-- /.menu-mega -->

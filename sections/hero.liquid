@@ -1,0 +1,530 @@
+{{- 'component-hero.css' | asset_url | stylesheet_tag: preload: true -}}
+
+<script src="{{ 'component-hero.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .hero {
+    --color: {{ section.settings.color }};
+  }
+
+  .hero .swiper-pagination-bullet path {
+    animation-duration: {{ section.settings.autoplay_interval }}s;
+  }
+</style>
+
+<div class="
+    hero
+    {% if section.settings.aspect_ratio_desktop == 'viewport-desktop' %}hero--viewport-desktop{% endif %}
+    {% if section.settings.aspect_ratio_mobile == 'viewport-mobile' %}hero--viewport-mobile{% endif %}"
+    data-hero
+>
+  {% if section.blocks.size > 0 %}
+    <hero-slider
+      id="slider-{{- section.id -}}"
+      class="swiper"
+      data-arrows="{{- section.settings.enable_arrows -}}"
+      data-fade="{{ section.settings.fade }}"
+      data-loop="{{ section.settings.loop }}"
+      data-slides="{{ section.blocks.size }}"
+      data-pagination="{{- section.settings.enable_pagination -}}"
+      data-pagination-position="{{- section.settings.pagination_position -}}"
+      data-autoplay="{{- section.settings.autoplay -}}"
+      data-autoplay-interval="{{- section.settings.autoplay_interval | times: 1000 -}}"
+    >
+      {% if section.settings.enable_arrows %}
+        <div class="hero__arrows swiper-arrows">
+          <button data-arrow-prev class="swiper-arrow swiper-arrow--prev {% if section.blocks.size == 1 %}swiper-button-lock{% endif %}" prev aria-label="{{ 'accessibility.previous' | t }}">
+            {% render 'icon-arrow-slider' %}
+          </button>
+
+          <button
+            data-arrow-next
+            class="swiper-arrow swiper-arrow--next {% if section.blocks.size == 1 %}swiper-button-lock{% endif %}" next aria-label="{{ 'accessibility.next' | t }}">
+            {% render 'icon-arrow-slider' %}
+          </button>
+        </div><!-- /.hero__arrows -->
+      {% endif %}
+
+      <ul class="swiper-wrapper list-unstyled">
+        {% for block in section.blocks %}
+          {% assign _block = block.settings %}
+
+          <li class="swiper-slide">
+            <div class="hero__slide" style="--color: {{ _block.color }};">
+              <div class="hero__image-background" style="--background: {{ _block.background }}"></div><!-- /.hero__background -->
+
+              {% if _block.image_desktop or _block.image_mobile %}
+                <div class="hero__image">
+                  <div class="
+                    media
+                    {{ section.settings.aspect_ratio_desktop }}
+                    {{ section.settings.aspect_ratio_mobile }}
+                    {% if _block.image_mobile != blank %}media--mobile-hidden{% endif %}
+                  ">
+                    {%-
+                      liquid
+                      if _block.image_desktop
+                        assign image = _block.image_desktop
+                        assign image_src = image | image_url: width: 500
+                        capture image_srcset
+                          render 'srcset', image: image, widths: '767,1100,1500,1780,2000,3000,3840'
+                          assign sizes = '(max-width: 480px) 767px,(max-width: 767px) 1100px'
+                        endcapture
+                        assign image_alt = image.alt | escape
+                        assign desktop_lazy = true
+                        if _block.image_mobile == blank and forloop.first
+                          assign desktop_lazy = false
+                        endif
+
+                        render 'image', src: image_src, srcset: image_srcset, sizes: sizes, alt: image_alt, width: image.width, height: image.height, focal_point: image.presentation.focal_point, lazyload: desktop_lazy
+                      endif
+                    -%}
+                  </div><!-- /.media media--16-9 -->
+
+                  {% if _block.image_mobile != blank %}
+                    <div class="media {{ section.settings.aspect_ratio_mobile }} media--mobile">
+                      {%-
+                        liquid
+                        assign image = _block.image_mobile
+                        assign image_src = image | image_url: width: 375
+                        capture image_srcset
+                          render 'srcset', image: image, widths: '767'
+                          assign sizes = '(max-width: 767px) 767px'
+                        endcapture
+                        assign image_alt = image.alt | escape
+
+                        assign lazyload = true
+                        if forloop.first
+                          assign lazyload = false
+                        endif
+
+                        render 'image', src: image_src, srcset: image_srcset, sizes: sizes, alt: image_alt, width: image.width, height: image.height, focal_point: image.presentation.focal_point, lazyload: lazyload
+                      -%}
+                    </div><!-- /.media media--9-16 media--mobile -->
+                  {% endif %}
+                </div><!-- /.hero__image -->
+              {% else %}
+                <div class="
+                  hero__video
+                  media
+                  {{ section.settings.aspect_ratio_desktop }}
+                  {{ section.settings.aspect_ratio_mobile }}
+                ">
+                  {% if _block.video != blank %}
+                    {{ _block.video | video_tag: controls: false, autoplay: true, muted: true, loop: true, image_size: '1920x' }}
+                  {% elsif _block.external_video != blank %}
+                    {% render 'external-video', video: _block.external_video, title: _block.external_video.alt, autoplay: true, loop: true %}
+                  {% else %}
+                    {{ 'lifestyle-2' | placeholder_svg_tag }}
+                  {% endif %}
+                </div><!-- /.hero__video -->
+              {% endif %}
+
+              <div
+                class="hero__content
+                hero__content--vertical-{{ _block.vertical_align }}
+                hero__content--horizontal-{{ _block.horizontal_alignment }}"
+              >
+                <div class="hero__container container {% if section.settings.enable_header_full_width %}container--fullwidth{% endif %}">
+                  <div class="hero__content-inner">
+                    {% if _block.heading != blank %}
+                      <h1 class="hero__title">
+                        {{ _block.heading | newline_to_br }}
+                      </h1><!-- /.hero__title -->
+                    {% endif %}
+
+                    {% if _block.subheading != blank %}
+                      <div class="hero__entry">
+                        {{ _block.subheading }}
+                      </div><!-- /.hero__entry -->
+                    {% endif %}
+                    <div class="hero__actions">
+                      {% for i in (1..2) %}
+                        {%-
+                          liquid
+                          assign button_label_handle = 'button_label_' | append: i
+                          assign button_link_handle = 'button_link_' | append: i
+                          assign button_style_handle = 'button_style_' | append: i
+                          assign button_hover_outline_handle = 'button_style_hover_outline_' | append: i
+                        -%}
+
+                        {% if _block[button_label_handle] != blank and _block[button_link_handle] != blank %}
+                          <a class="button {{ _block[button_style_handle] }} {% if _block[button_hover_outline_handle] %}button--outline{% endif %} {% if forloop.first %}button--style-1 {% else %}button--style-2{% endif %}"
+                            href="{{	_block[button_link_handle] }}">{{ _block[button_label_handle] }}
+                          </a>
+                        {% endif %}
+                      {% endfor %}
+                    </div><!-- /.hero__actions -->
+                  </div><!-- /.hero__content-inner -->
+                </div><!-- /.hero__container -->
+              </div><!-- /.hero__content -->
+            </div><!-- /.hero__slide -->
+          </li><!-- /.swiper-slide -->
+        {% endfor %}
+      </ul><!-- /.swiper-wrapper -->
+
+      <div data-pagination class="swiper-pagination {% if section.settings.enable_header_full_width %}swiper-pagination__narrow{% endif %}">
+      </div><!-- /.swiper-pagination -->
+    </hero-slider>
+  {% else %}
+    <div class="hero__image">
+      <div class="media">
+        {{ 'lifestyle-2' | placeholder_svg_tag }}
+      </div><!-- /.media -->
+    </div><!-- /.hero__image media -->
+  {% endif %}
+</div><!-- /.hero -->
+
+{% schema %}
+{
+  "name": "t:sections.hero.name",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:sections.hero.settings.color_actions.label",
+      "info": "t:sections.hero.settings.color_actions.info",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_desktop",
+      "label": "t:sections.global.settings.aspect_ratio_desktop.label",
+      "options": [
+        {
+          "value": "media--21-9",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.21_9.label"
+        },
+        {
+          "value": "media--2-1",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.2_1.label"
+        },
+        {
+          "value": "media--16-9",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.16_9.label"
+        },
+        {
+          "value": "media--3-2",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.3_2.label"
+        },
+        {
+          "value": "media--1-1",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.1_1.label"
+        },
+        {
+          "value": "viewport-desktop",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.viewport.label"
+        }
+      ],
+      "default": "media--16-9"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_header_full_width",
+      "label": "t:sections.hero.settings.enable_wide.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_arrows",
+      "label": "t:sections.global.settings.arrows.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "fade",
+      "label": "t:sections.hero.settings.fade.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "t:sections.hero.settings.loop.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pagination",
+      "label": "t:sections.hero.settings.enable_pagination.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "pagination_position",
+      "label": "t:sections.hero.settings.pagination_position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.hero.settings.pagination_position.options.left.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.hero.settings.pagination_position.options.center.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.hero.settings.pagination_position.options.right.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.global.settings.autoplay.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "t:sections.global.settings.autoplay_interval.unit",
+      "label": "t:sections.global.settings.autoplay_interval.label",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.section_headers.mobile"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "t:sections.global.settings.aspect_ratio_mobile.label",
+      "options": [
+        {
+          "value": "media--mobile-9-16",
+          "label": "t:sections.global.settings.aspect_ratio_mobile.options.9_16.label"
+        },
+        {
+          "value": "media--mobile-2-3",
+          "label": "t:sections.global.settings.aspect_ratio_mobile.options.2_3.label"
+        },
+        {
+          "value": "media--mobile-4-5",
+          "label": "t:sections.global.settings.aspect_ratio_mobile.options.4_5.label"
+        },
+        {
+          "value": "media--mobile-1-1",
+          "label": "t:sections.global.settings.aspect_ratio_mobile.options.1_1.label"
+        },
+        {
+          "value": "viewport-mobile",
+          "label": "t:sections.global.settings.aspect_ratio_mobile.options.viewport.label"
+        }
+      ],
+      "default": "media--mobile-9-16"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "t:sections.hero.blocks.slideshow.name",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "t:sections.global.settings.colors.text",
+          "default": "#000000"
+        },
+        {
+          "type": "color_background",
+          "id": "background",
+          "label": "t:sections.hero.blocks.slideshow.settings.background.label",
+          "default": "linear-gradient(0deg, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 1) 100%)"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.global.settings.section_headers.media"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "t:sections.global.settings.image.label_desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "t:sections.global.settings.image.label_mobile"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:sections.hero.blocks.slideshow.settings.video.label"
+        },
+        {
+          "type": "video_url",
+          "id": "external_video",
+          "label": "t:sections.hero.blocks.slideshow.settings.external_video.label",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.global.settings.section_headers.text_content"
+        },
+        {
+          "type": "select",
+          "id": "vertical_align",
+          "label": "t:sections.global.settings.vertical_align.label",
+          "options": [
+            {
+              "value": "top",
+              "label": "t:sections.global.settings.vertical_align.options.top"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.global.settings.vertical_align.options.center"
+            },
+            {
+              "value": "bottom",
+              "label": "t:sections.global.settings.vertical_align.options.bottom"
+            }
+          ],
+          "default": "bottom"
+        },
+        {
+          "type": "select",
+          "id": "horizontal_alignment",
+          "label": "t:sections.global.settings.horizontal_alignment.label",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.global.settings.horizontal_alignment.options.left"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.global.settings.horizontal_alignment.options.center"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.global.settings.horizontal_alignment.options.right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "t:sections.global.settings.heading.label",
+          "default": "Describe your brand here"
+        },
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "label": "t:sections.global.settings.subheading.label",
+          "default": "<p>Use this text to share information</p>"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.global.settings.section_headers.primary_button"
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "t:sections.global.settings.button_label.label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "t:sections.global.settings.button_link.label",
+          "default": "/collections"
+        },
+        {
+          "type": "select",
+          "id": "button_style_1",
+          "label": "t:sections.global.settings.button_style.label",
+          "options": [
+            {
+              "value": "button--style-1",
+              "label": "t:sections.global.settings.button_style.options.style_one"
+            },
+            {
+              "value": "button--style-2",
+              "label": "t:sections.global.settings.button_style.options.style_two"
+            },
+            {
+              "value": "button--style-3",
+              "label": "t:sections.global.settings.button_style.options.style_three"
+            },
+            {
+              "value": "button--style-4",
+              "label": "t:sections.global.settings.button_style.options.style_four"
+            }
+          ],
+          "default": "button--style-2"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_hover_outline_1",
+          "label": "t:sections.global.settings.button_style_hover_outline.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.global.settings.section_headers.secondary_button"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "t:sections.global.settings.button_label.label",
+          "default": "Click me"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "t:sections.global.settings.button_link.label",
+          "default": "/collections"
+        },
+        {
+          "type": "select",
+          "id": "button_style_2",
+          "label": "t:sections.global.settings.button_style.label",
+          "options": [
+            {
+              "value": "button--style-1",
+              "label": "t:sections.global.settings.button_style.options.style_one"
+            },
+            {
+              "value": "button--style-2",
+              "label": "t:sections.global.settings.button_style.options.style_two"
+            },
+            {
+              "value": "button--style-3",
+              "label": "t:sections.global.settings.button_style.options.style_three"
+            },
+            {
+              "value": "button--style-4",
+              "label": "t:sections.global.settings.button_style.options.style_four"
+            }
+          ],
+          "default": "button--style-3"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_hover_outline_2",
+          "label": "t:sections.global.settings.button_style_hover_outline.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero.name",
+      "blocks": [
+        {
+          "type": "slideshow"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

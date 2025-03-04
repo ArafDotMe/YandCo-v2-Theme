@@ -1,0 +1,21 @@
+{% comment %}
+ORIGINAL CODE
+<span class="util-text">{{ 'general.header_utils.cart' | t }}</span>
+
+<i class="icon icon--large {% if cart.item_count > 0 %}has-item-count{% endif %}">
+  {%- render 'icon-cart' -%}
+  <span class="cart-count-badge caption caption--small{% if cart.item_count == 0 %} hidden{% endif %}">{{- cart.item_count -}}</span>
+</i><!-- /.icon -->
+{% endcomment %}
+
+<span class="icon">
+    <svg
+        viewBox="0 0 18 18"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M5.25391 6V4.5C5.25391 2.42893 6.93284 0.75 9.00392 0.75C11.075 0.75 12.7539 2.42893 12.7539 4.5V6H15.0039C15.4181 6 15.7539 6.33579 15.7539 6.75V15.75C15.7539 16.1642 15.4181 16.5 15.0039 16.5H3.00391C2.5897 16.5 2.25391 16.1642 2.25391 15.75V6.75C2.25391 6.33579 2.5897 6 3.00391 6H5.25391ZM5.25391 7.5H3.75391V15H14.2539V7.5H12.7539V9.00003H11.2539V7.5H6.75391V9.00003H5.25391V7.5ZM6.75391 6H11.2539V4.5C11.2539 3.25736 10.2465 2.25 9.00392 2.25C7.76125 2.25 6.75391 3.25736 6.75391 4.5V6Z"
+        />
+    </svg>
+</span>
+<span>{{- cart.item_count -}}</span>

@@ -1,0 +1,147 @@
+<style>
+/*----------------------------------------*/
+/*  09. Footer Content CSS
+/*----------------------------------------*/
+.footer-content-section {
+  padding: 60px 0 90px;
+}
+
+.footer-content-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.footer-content-col {
+  padding: 0 15px;
+  width: 25%;
+}
+@media only screen and (max-width: 1023px) {
+  .footer-content-col {
+    width: 33.33%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer-content-col {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .footer-content-col {
+    width: 100%;
+  }
+}
+
+.footer-content-item {
+  padding-top: 30px;
+}
+.footer-content-item-title {
+  font-family: 'Helvetica';
+  font-size: 22px;
+  font-weight: 600;
+  color: #8f8b54;
+  margin-top: 0;
+}
+.footer-content-item p {
+  font-family: 'Helvetica';
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15.4px;
+  color: rgba(29, 29, 32, 0.5);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.footer-content-item ul,
+.footer-content-item ol {
+  list-style-type: decimal;
+  padding-left: 14px;
+}
+.footer-content-item ul + ul,
+.footer-content-item ol + ol {
+  margin-top: 10px;
+}
+.footer-content-item ul li,
+.footer-content-item ol li {
+  font-family: 'Helvetica';
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15.4px;
+  color: rgba(29, 29, 32, 0.5);
+}
+.footer-content-item ul li strong,
+.footer-content-item ol li strong {
+  font-size: 13px;
+  font-weight: 400;
+}  
+</style>
+
+{%- if template == 'index' -%}
+  <!-- Footer SEO Content Start -->
+  <div class="footer-content-section">
+      <div class="container">
+          <div class="footer-content-row msnry-grid">
+  
+              {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'content' %}
+              <div class="footer-content-col grid-item">
+                  <!-- Footer Content Item Start -->
+                  <div class="footer-content-item">
+                      <h2 class="footer-content-item-title">
+                        {{ block.settings.seo_title }}
+                      </h2>
+                      <div class="footer-content-item-body">
+                        {{ block.settings.seo_body }}
+                      </div>
+                  </div>
+                  <!-- Footer Content Item End -->
+              </div>
+              {% endcase %}
+            {% endfor %}
+            
+          </div>
+      </div>
+  </div>
+  <!-- Footer SEO Content End -->
+{%- endif -%}
+
+<script src="{{- 'masonry.pkgd.min.js' | asset_url -}}"></script>
+<script>
+  const elem = document.querySelector(".msnry-grid");
+  let msnry = new Masonry(elem, {
+      // options
+      itemSelector: ".grid-item",
+      // columnWidth: 200,
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "SEO Content v2",
+    "max_blocks": 10,
+    "settings": [],
+    "blocks": [
+      {
+       "name": "Content",
+       "type": "content",
+       "settings": [
+         {
+          "type": "text",
+          "id": "seo_title",
+          "label": "Title"
+        },
+         {
+          "type": "richtext",
+          "id": "seo_body",
+          "label": "Body"
+        }
+       ]
+     }
+    ],
+    "presets": [
+      {
+        "name": "Y&Co SEO Content"
+      }]
+  }
+{% endschema %}

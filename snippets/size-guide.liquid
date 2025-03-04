@@ -1,0 +1,89 @@
+{% if section.blocks.size > 0 %}
+  <size-guide>
+    <div class="size-guide-content size-tabs">
+      <div class="size-guide__choice">
+        {% if section.settings.heading != blank %}
+          <h4 class="caption-ffb" style="text-transform: capitalize;">Y&Co Size Guide</h4>
+          <p>Finding the perfect fit is essential for your little one's comfort.</p>
+          <p>Our easy-to-follow sizing chart for Y&Co ensures you choose the right size based on your child’s weight and height giving you confidence in every purchase, every time.</p>
+        {% endif %}
+        
+        <ul class="size-guide__choice-options list-unstyled">
+          <li><button role="tab" aria-selected="true" id="1" type="button">CM</button></li>
+          <li><button role="tab" aria-selected="false" id="2" type="button">IN</button></li>
+        </ul><!-- /.size-guide__choice-options -->
+      </div><!-- /.size-guide__choice -->
+
+      <div class="size-guide__chart">
+        {% if section.settings.chart_heading != blank %}
+          <h5 class="caption-ffb" style="text-transform: capitalize;">{{ section.settings.chart_heading }}</h5>
+        {% endif %}
+
+        <div class="size-guide__table size-guide__table_cm" role="tabpanel" aria-labelledby="1">
+          <ul class="size-guide__table-head">
+            <li style="text-transform: capitalize;">
+              <span>{{ 'products.product.size_guide.size' | t }}</span>
+            </li>
+
+            <li style="text-transform: capitalize;">
+              <span>Height (CM)</span>
+            </li>
+
+            <li style="text-transform: capitalize;">
+              <span>Waist (CM)</span>
+            </li>
+          </ul><!-- /.size-guide__table-head -->
+
+          <ul class="size-guide__table-body">
+            {% for block in section.blocks %}
+              {% assign _block = block.settings %}
+
+              {% if _block.title != blank %}
+                <li>
+                  <span>{{ _block.title }}</span>
+
+                  <span>{{ _block.height }} CM</span>
+
+                  <span>{{ _block.waistt }} CM</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul><!-- /.size-guide__table-body -->
+        </div><!-- /.size-guide__table -->
+
+        <div class="size-guide__table size-guide__table_in" role="tabpanel" aria-labelledby="2" hidden>
+          <ul class="size-guide__table-head">
+            <li style="text-transform: capitalize;">
+              <span>{{ 'products.product.size_guide.size' | t }}</span>
+            </li>
+
+            <li style="text-transform: capitalize;">
+              <span>Height (IN)</span>
+            </li>
+
+            <li style="text-transform: capitalize;">
+              <span>Waist (IN)</span>
+            </li>
+          </ul><!-- /.size-guide__table-head -->
+
+          <ul class="size-guide__table-body">
+            {% for block in section.blocks %}
+              {% assign _block = block.settings %}
+
+              {% if _block.title != blank %}
+                <li>
+                  <span>{{ _block.title }}</span>
+                  
+                  <span>{{ block.settings.height | times: 0.39370 | round: 1 | json }} IN</span>
+
+                  <span>{{ block.settings.waistt | times: 0.39370 | round: 1 | json }} IN</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul><!-- /.size-guide__table-body -->
+        </div><!-- /.size-guide__table -->
+        
+      </div><!-- /.size-guide__chart -->
+    </div><!-- /.size-guide-content -->
+  </size-guide>
+{% endif %}

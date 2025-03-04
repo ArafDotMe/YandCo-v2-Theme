@@ -1,0 +1,1261 @@
+<link rel="stylesheet" href="{{ 'return-refund-v2.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-faq-v2.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'accordion-item-faq.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>
+  {{- 'return-refund-v2.css' | asset_url | stylesheet_tag -}}
+  {{- 'section-faq-v2.css' | asset_url | stylesheet_tag -}}
+  {{- 'accordion-item-faq.css' | asset_url | stylesheet_tag -}}
+</noscript>
+
+<script src="{{ 'accordion-item.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'faq-tabs-v2.js' | asset_url }}" defer="defer"></script>
+
+
+{% if section.settings.overwrite_colors %}
+  <style>
+    .section-faq--{{ section.id }} {
+      --color: {{ section.settings.color }};
+      --background: {{ section.settings.background }};
+    }
+  </style>
+{% endif %}
+
+{% if section.settings.image_desktop or section.blocks.size > 0 %}
+  <div class="section-faq section-faq--{{ section.id }} {% if section.settings.image_desktop == blank %}section-faq--without-image{% endif %}">
+    <div class="container {% if section.settings.enable_wide %}container--fluid{% endif %}">
+
+      <div class="return-refund-banner">
+          <div class="return-refund-banner--content">
+              <h2 class="return-refund-banner--title">
+                  {{ page_title }}
+              </h2>
+              <p>
+                  {{ section.settings.subtitle }}
+              </p>
+          </div>
+          <div class="return-refund-banner--image">
+              <img src="{{ 'faq.svg' | asset_url }}" alt="return-refund" loading="lazy" width="" height="">
+          </div>
+      </div>
+            
+      <div class="section__inner tabs">
+        <div class="faq-menu">
+          <ul class="faq-menu-link list-unstyled">
+              <li><button role="tab" aria-selected="true" id="1" type="button">{% comment %} General Information {% endcomment %}{{- 'faq.general_information' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="2" type="button">{% comment %}Orders{% endcomment %}{{- 'faq.orders' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="3" type="button">{% comment %}Payments{% endcomment %}{{- 'faq.payments' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="4" type="button">{% comment %}Shipping & Delivery{% endcomment %}{{- 'faq.shipping_delivery' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="5" type="button">{% comment %}Returns & Exchanges{% endcomment %}{{- 'faq.returns_exchanges' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="6" type="button">{% comment %}Product & Sizing{% endcomment %}{{- 'faq.product_sizing' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="7" type="button">{% comment %}Sustainability and Ethical Practices{% endcomment %}{{- 'faq.sustainability_and_ethical_practices' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="8" type="button">{% comment %}Customer Support{% endcomment %}{{- 'faq.customer_support' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="9" type="button">{% comment %}Promotions{% endcomment %}{{- 'faq.promotions' | t -}}</button></li>
+              <li><button role="tab" aria-selected="false" id="10" type="button">{% comment %}Accounts{% endcomment %}{{- 'faq.accounts' | t -}}</button></li>
+          </ul>
+        </div>
+
+        <div class="section__content {% if section.settings.flip %}section__content--flip{% endif %}"> 
+          
+          <div role="tabpanel" aria-labelledby="1">
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "general_information" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="2" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "order" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="3" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "payment" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="4" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "shipping" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="5" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "return_and_exchanges" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="6" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "products_and_sizing" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="7" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "sustainability" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="8" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "support" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="9" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "promotions" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          <div role="tabpanel" aria-labelledby="10" hidden>
+          {% for block in section.blocks %}
+            {% if block.type == "faq" %}
+              {% if block.settings.select_topic == "accounts" %}
+
+                    {% if block.settings.heading-1 != blank and block.settings.content-1 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-1 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-1 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-2 != blank and block.settings.content-2 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-2 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-2 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-3 != blank and block.settings.content-3 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-3 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-3 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %}
+
+                    {% if block.settings.heading-4 != blank and block.settings.content-4 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-4 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-4 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+
+                    {% if block.settings.heading-5 != blank and block.settings.content-5 != blank %}
+                      <accordion-item class="accordion-item accordion-item--faq">
+                        <details open {% if open %}is-open{% endif %}>
+                          <summary class="accordion-item__title">
+                            <span></span>
+                            {{ block.settings.heading-5 }}
+                          </summary>
+                      
+                          <div class="accordion-item__content">
+                            <div class="accordion-item__content-inner">
+                              {{ block.settings.content-5 }}
+                            </div><!-- /.accordion-item__content-inner -->
+                          </div><!-- /.accordion-item__content -->
+                        </details>
+                      </accordion-item>
+                    {% endif %} 
+                
+             {% endif %}
+            {% endif %}  
+          {% endfor %}
+          </div>
+
+          </div><!-- /.section__content -->
+          
+      </div><!-- /.section__inner -->
+      
+    </div><!-- /.container -->
+  </div><!-- /.section-faq -->
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:sections.faq.name v2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Page Subtitle"
+    },
+    {
+      "type": "checkbox",
+      "id": "overwrite_colors",
+      "label": "t:sections.global.settings.overwrite_colors.label"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:sections.global.settings.colors.text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:sections.global.settings.colors.background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_wide",
+      "label": "t:sections.global.settings.enable_wide.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "flip",
+      "label": "t:sections.global.settings.flip.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.section_headers.media"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_desktop",
+      "label": "t:sections.global.settings.aspect_ratio_desktop.label",
+      "options": [
+        {
+          "value": "media--1-2",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.1_2.label"
+        },
+        {
+          "value": "media--2-3",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.2_3.label"
+        },
+        {
+          "value": "media--3-4",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.3_4.label"
+        },
+        {
+          "value": "media--1-1",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.1_1.label"
+        },
+        {
+          "value": "media--4-3",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.4_3.label"
+        },
+        {
+          "value": "media--3-2",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.3_2.label"
+        },
+        {
+          "value": "media--16-9",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.16_9.label"
+        }
+      ],
+      "default": "media--4-3"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "t:sections.global.settings.aspect_ratio_mobile.label",
+      "options": [
+        {
+          "value": "media--mobile-1-2",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.1_2.label"
+        },
+        {
+          "value": "media--mobile-2-3",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.2_3.label"
+        },
+        {
+          "value": "media--mobile-3-4",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.3_4.label"
+        },
+        {
+          "value": "media--mobile-1-1",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.1_1.label"
+        },
+        {
+          "value": "media--mobile-4-3",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.4_3.label"
+        },
+        {
+          "value": "media--mobile-3-2",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.3_2.label"
+        },
+        {
+          "value": "media--mobile-16-9",
+          "label": "t:sections.global.settings.aspect_ratio_desktop.options.16_9.label"
+        }
+      ],
+      "default": "media--mobile-1-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "t:sections.faq.blocks.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "select_topic",
+          "label": "Select Topic",
+          "options": [
+            {
+              "value": "general_information",
+              "label": "General Information"
+            },
+            {
+              "value": "order",
+              "label": "Order"
+            },
+            {
+              "value": "payment",
+              "label": "Payment"
+            },
+            {
+              "value": "shipping",
+              "label": "Shipping"
+            },
+            {
+              "value": "return_and_exchanges",
+              "label": "Return & Exchanges"
+            },
+            {
+              "value": "products_and_sizing",
+              "label": "Products & Sizing"
+            },
+            {
+              "value": "sustainability",
+              "label": "Sustainability"
+            },
+            {
+              "value": "support",
+              "label": "Support"
+            },
+            {
+              "value": "promotions",
+              "label": "Promotions"
+            },
+            {
+              "value": "accounts",
+              "label": "Accounts"
+            }
+          ],
+          "default": "general_information"
+        },
+        {
+          "type": "text",
+          "id": "heading-1",
+          "label": "Heading 1",
+        },
+        {
+          "type": "richtext",
+          "id": "content-1",
+          "label": "Content 1",
+        },
+        {
+          "type": "text",
+          "id": "heading-2",
+          "label": "Heading 2",
+        },
+        {
+          "type": "richtext",
+          "id": "content-2",
+          "label": "Content 2",
+        },
+        {
+          "type": "text",
+          "id": "heading-3",
+          "label": "Heading 3",
+        },
+        {
+          "type": "richtext",
+          "id": "content-3",
+          "label": "Content 3",
+        },
+        {
+          "type": "text",
+          "id": "heading-4",
+          "label": "Heading 4",
+        },
+        {
+          "type": "richtext",
+          "id": "content-4",
+          "label": "Content 4",
+        },
+        {
+          "type": "text",
+          "id": "heading-5",
+          "label": "Heading 5",
+        },
+        {
+          "type": "richtext",
+          "id": "content-5",
+          "label": "Content 5",
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faq.name v2",
+      "blocks": [
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

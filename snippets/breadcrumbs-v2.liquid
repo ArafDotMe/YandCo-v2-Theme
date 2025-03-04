@@ -1,0 +1,42 @@
+<div class="breadcrumbs-row flex--center">
+ <div class="breadcrumbs-col-full">
+   {% if collection.image %}
+       <img src="{{ collection.image | img_url: '1024x350' }}" style="border-radius: 10px; width: 100% !important;" width="" height="" alt="{{ collection.title }}" />
+   {% else %}
+     <img src="{{ 'collection_banner_default.png' | asset_url }}" style="border-radius: 10px; width: 100% !important;" width="" height="" />
+   {% endif %}
+    <div class="breadcrumbs-content">
+      {% if settings.enable_breadcrumbs %}
+        <div class="collection__breadcrumbs breadcrumbs">
+          <nav role="navigation" aria-label="{{- 'general.breadcrumbs.label' | t -}}">
+            <ul class="list-unstyled" role="list">
+              <li>
+                <a href="{{- routes.root_url -}}" class="link">
+                  {{- 'general.breadcrumbs.home' | t -}}
+                </a>
+              </li>
+          
+              <li>/</li>
+          
+              {%- if product and collection -%}
+                <li>
+                  <a href="{{- collection.url -}}" class="link">
+                    {{- collection.title | escape -}}
+                  </a>
+                </li>
+                <li>/</li>
+              {%- endif -%}
+          
+              <li>
+                <span>{{- page_title | escape -}}</span>
+              </li>
+            </ul>
+          </nav>
+        </div><!-- /.collection__breadcrumbs -->
+      {% endif %}
+    </div>
+ </div>
+</div>
+
+
+

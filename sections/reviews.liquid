@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="{{ 'section-reviews.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>
+  {{- 'section-reviews.css' | asset_url | stylesheet_tag -}}
+</noscript>
+
+<script src="{{ 'slider-reviews.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  {% if section.settings.overwrite_colors %}
+    .section-reviews--{{ section.id }} {
+      --color: {{ section.settings.color }};
+      --background: {{ section.settings.background }};
+    }
+  {% endif %}
+
+  .section-reviews .swiper-pagination-bullet path {
+    animation-duration: {{ section.settings.autoplay_interval }}s;
+  }
+</style>
+
+<section class="section-reviews section-reviews--{{ section.id }} section">
+  <div data-aos="fade-up" class="container {% if section.settings.enable_full_width %}container--fullwidth{% endif %}">
+    <div class="section__head section__head--with-arrow section__head--{{ section.settings.horizontal_alignment }}">
+      <h2 class="section__heading">
+        {{ section.settings.heading | newline_to_br }}
+      </h2><!-- /.section__heading -->
+
+      <div class="section__arrows swiper-arrows swiper-arrows--border {% if section.blocks.size < 5 %}hidden{% endif %}">
+        <button data-arrow-prev class="swiper-arrow swiper-arrow--prev" prev aria-label="{{ 'accessibility.previous' | t }}">
+          {% render 'icon-arrow-slider' %}
+        </button>
+
+        <button data-arrow-next class="swiper-arrow swiper-arrow--next" next aria-label="{{ 'accessibility.next' | t }}">
+          {% render 'icon-arrow-slider' %}
+        </button>
+      </div><!-- /.section__arrows -->
+    </div><!-- /.section__head -->
+
+    <div class="section__body">
+      <slider-reviews
+        class="swiper"
+        data-autoplay="{{- section.settings.autoplay -}}"
+        data-autoplay-interval="{{- section.settings.autoplay_interval | times: 1000 -}}"
+      >
+        <ul class="swiper-wrapper section__list list-unstyled">
+          {% for block in section.blocks %}
+            {% assign _block = block.settings %}
+
+            {% if _block.description != blank %}
+              <li class="swiper-slide">
+                <div class="section__review-stars">
+                  {% for i in (1.._block.stars) %}
+                    {% render 'icon-star' %}
+                  {% endfor %}
+                </div><!-- /.section__review-stars -->
+
+                <blockquote>
+                  {{ _block.description }}
+                </blockquote>
+
+                {% if _block.text != blank %}
+                  <p class="section__review-author">
+                    {{ _block.text }}
+                  </p><!-- /.section__review-author -->
+                {% endif %}
+
+                {% if _block.addition != blank %}
+                  <p class="section__review-addition">
+                    {{ _block.addition }}
+                  </p><!-- /.section__review-addition -->
+                {% endif %}
+              </li><!-- /.swiper-slide -->
+            {% endif %}
+          {% endfor %}
+        </ul><!-- /.swiper-wrapper -->
+
+        <div data-pagination class="section__pagination swiper-pagination">
+        </div><!-- /.swiper-pagination -->
+      </slider-reviews>
+    </div><!-- /.section__body -->
+  </div><!-- /.container -->
+</section><!-- /.section-reviews -->
+
+{% schema %}
+{
+  "name": "t:sections.reviews.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "overwrite_colors",
+      "label": "t:sections.global.settings.overwrite_colors.label"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:sections.global.settings.colors.text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:sections.global.settings.colors.background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_full_width",
+      "label": "t:sections.global.settings.enable_wide.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.global.settings.autoplay.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "t:sections.global.settings.autoplay_interval.unit",
+      "label": "t:sections.global.settings.autoplay_interval.label",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.section_headers.text_content"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "t:sections.global.settings.horizontal_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.global.settings.horizontal_alignment.options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.global.settings.horizontal_alignment.options.center"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.global.settings.horizontal_alignment.options.right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "t:sections.global.settings.heading.label",
+      "default": "What Our Clients Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "t:sections.reviews.blocks.name",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "t:sections.reviews.blocks.settings.stars.label",
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.reviews.blocks.settings.description.label",
+          "default": "<p>“Testimonial highlighting your great products and services.”</p>"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.reviews.blocks.settings.author.label",
+          "default": "Author name"
+        },
+        {
+          "type": "text",
+          "id": "addition",
+          "label": "t:sections.reviews.blocks.settings.addition.label",
+          "default": "Author role"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.reviews.name",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

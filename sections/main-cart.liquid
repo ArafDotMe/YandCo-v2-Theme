@@ -1,0 +1,60 @@
+{{- 'component-cart-items-v2.css' | asset_url | stylesheet_tag -}}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+<cart-items class="cart" id="{{- section.id -}}">
+  <div class="cart__container container container--small">
+    <div class="cart__head center">
+      <h1 class="cart__title">
+        {{- 'cart.title' | t -}}
+
+        <span>{{- 'cart.items' | t: count: cart.items.size -}}</span>
+      </h1><!-- /.cart__title -->
+
+      {%- render 'shipping-bar', class: 'cart__shipping-bar' -%}
+    </div><!-- /.cart__head center -->
+
+    <div class="cart__body">
+      {%- if cart != empty -%}
+        <form action="{{- routes.cart_url -}}" class="cart__contents" method="post" id="cart">
+          <div class="cart__items" id="main-cart-items" data-id="{{- section.id -}}">
+            <table class="cart-items">
+              <thead class="cart-items__head">
+                <tr class="cart-items__row">
+                  <th class="cart-items__cell cart-items__cell--item caption regular" colspan="2" scope="col">{{- 'cart.item' | t -}}</th>
+
+                  <th class="cart-items__cell cart-items__cell--price caption regular" colspan="1" scope="col">{{- 'cart.price' | t -}}</th>
+
+                  <th class="cart-items__cell cart-items__cell--quantity caption regular" colspan="1" scope="col">{{- 'cart.quantity' | t -}}</th>
+
+                  <th class="cart-items__cell cart-items__cell--total caption regular" colspan="1" scope="col">{{- 'cart.total' | t -}}</th>
+                </tr><!-- /.cart-items__row -->
+              </thead><!-- /.cart-items__head -->
+
+              <tbody class="cart-items__body">
+                {%- for line_item in cart.items -%}
+                  {%- render 'line-item', line_item: line_item -%}
+                {%- endfor -%}
+              </tbody><!--/.cart-items__body  -->
+
+              <tfoot class="cart-items__foot">
+                <tr class="cart-items__row">
+                  <td class="cart-items__cell" colspan="5">
+                    {%- render 'cart-summary' show_note_field: true, show_checkout_buttons: true -%}
+                  </td><!-- /.cart-items__cell -->
+                </tr><!-- /.cart-items__row -->
+              </tfoot><!-- /.cart-items__foot -->
+            </table><!-- /.cart-items -->
+          </div><!-- /#main-cart-items.cart__items -->
+        </form><!-- /.cart__contents -->
+      {%- endif -%}
+    </div>
+  </div><!-- /.container -->
+</cart-items>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart.name",
+  "tag": "section"
+}
+{% endschema %}

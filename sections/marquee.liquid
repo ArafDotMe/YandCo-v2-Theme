@@ -1,0 +1,202 @@
+{{- 'section-marquee.css' | asset_url | stylesheet_tag -}}
+
+<style>
+  .marquee--{{ section.id }} {
+    {% if section.settings.overwrite_colors %}
+      --color: {{ section.settings.color }};
+      --background: {{ section.settings.background }};
+    {% endif %}
+    --font-size-desktop: {{ section.settings.font_size_desktop }}px;
+    --font-size-mobile: {{ section.settings.font_size_mobile }}px;
+  }
+</style>
+
+<div class="
+  marquee
+  marquee--{{ section.id }}
+  marquee--spacing-{{ section.settings.inner_spacing }}
+  marquee--speed-{{ section.settings.speed }}
+  {% if section.settings.pause_on_hover %}marquee--pause-hover{% endif %}
+">
+  <div class="marquee__inner">
+    {% for i in (1..30) %}
+      {% for block in section.blocks %}
+        <span class="marquee__content" {% if block.settings.overwrite_colors %}style="--color: {{ block.settings.color }};"{% endif %}>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+
+          {% if block.settings.image %}
+            <img
+              src="{{ block.settings.image | image_url: width: 80 }}"
+              alt="{{ block.settings.image.alt }}"
+              width="auto" height="auto"
+              loading="lazy"
+              class="lazyload no-js-hidden"
+            >
+          {% endif %}
+
+          {{ block.settings.text | escape }}
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+        </span><!-- /.marquee__content -->
+      {% endfor %}
+    {% endfor %}
+  </div><!-- /.marquee__inner -->
+</div><!-- /.marquee -->
+
+{% schema %}
+{
+  "name": "t:sections.marquee.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "overwrite_colors",
+      "label": "t:sections.global.settings.overwrite_colors.label"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:sections.global.settings.colors.text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:sections.global.settings.colors.background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "min": 14,
+      "max": 54,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.marquee.settings.font_size_desktop.label",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.marquee.settings.font_size_mobile.label",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "inner_spacing",
+      "label": "t:sections.marquee.settings.inner_spacing.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.marquee.settings.inner_spacing.options.none"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.marquee.settings.inner_spacing.options.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.marquee.settings.inner_spacing.options.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.marquee.settings.inner_spacing.options.large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "speed",
+      "label": "t:sections.marquee.settings.speed.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.marquee.settings.speed.options.none"
+        },
+        {
+          "value": "slow",
+          "label": "t:sections.marquee.settings.speed.options.slow"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.marquee.settings.speed.options.medium"
+        },
+        {
+          "value": "fast",
+          "label": "t:sections.marquee.settings.speed.options.fast"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "t:sections.marquee.settings.pause_on_hover.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:sections.marquee.blocks.content.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "overwrite_colors",
+          "label": "t:sections.global.settings.overwrite_colors.label"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "t:sections.global.settings.colors.text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.marquee.blocks.content.settings.text.label",
+          "default": "Your text goes here"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.global.settings.image.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.global.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.marquee.name",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

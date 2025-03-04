@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="{{ 'featured-collections-v2.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<!-- Shop By Collection Start -->
+<div class="shop-collection-section shop-collection">
+    <div class="container">
+        <div class="shop-collection-wrapper">
+            <!-- Section Title Start -->
+            <div class="section-title">
+                <h2 class="section-title-title">{{ section.settings.title }}</h2>
+            </div>
+            <!-- Section Title End -->
+
+            <div class="shop-collection-nav">
+                <div class="button-prev">
+                    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.8713 8.24773L9.8943 4.22472L8.83365 3.16406L3 8.99773L8.83365 14.8313L9.8943 13.7707L5.8713 9.74773H15V8.24773H5.8713Z" />
+                    </svg>
+                </div>
+                <div class="button-next">
+                    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.1287 8.24773L8.1057 4.22472L9.16635 3.16406L15 8.99773L9.16635 14.8313L8.1057 13.7707L12.1287 9.74773H3V8.24773H12.1287Z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                <div class="swiper-slide">
+                    <!-- Collection Item Start -->
+                    <div class="collection-item">
+                        <div class="collection-item-image">
+                            <img src="{{ block.settings.image_desktop | image_url }}" alt="collection" width="339" height="452" />
+                        </div>
+                        <div class="collection-item-content">
+                            <a class="collection-item-btn" href="{{ block.settings.collectiom_url }}">
+                                <span>{{ block.settings.collectiom_name }}</span>
+                                <span class="icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M6.00005 19L19 5.99996M19 5.99996V18.48M19 5.99996H6.52005" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Collection Item End -->
+                </div>
+               {% endfor %}                               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop By Collection End -->
+
+<script src="{{ 'featured-collections-v2.js' | asset_url }}" defer="defer"></script>                                              
+
+{% schema %}
+  {
+    "name": "Featured Collections v2",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Margin Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Margin Bottom",
+        "default": 0
+      }
+    ],
+    "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collectiom_name",
+          "label": "Collection Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktom Slide",
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Slide",
+        },
+        {
+          "type": "url",
+          "id": "collectiom_url",
+          "label": "Select Collection",
+        }
+      ]
+    }
+    ],
+    "presets": [
+    {
+      "name": "Featured Collections v2"
+    }
+  ],
+  }
+{% endschema %}

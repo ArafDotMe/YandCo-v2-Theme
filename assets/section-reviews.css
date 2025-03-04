@@ -1,0 +1,80 @@
+.section-reviews {
+  background-color: var(--background);
+  color: var(--color);
+}
+
+@media (max-width: 767px) {
+  .section-reviews .section__head.section__head--with-arrow {
+    padding: 0;
+  }
+
+  .section-reviews .section__arrows {
+    display: none;
+  }
+}
+
+.section-reviews .section__body {
+  margin: 0 auto;
+}
+
+.section-reviews slider-reviews {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .section-reviews .section__list li {
+    text-align: center;
+  }
+}
+
+.section-reviews .section__review-stars i + i {
+  margin-left: 0.4rem;
+}
+
+.section-reviews blockquote {
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  border: none;
+  margin: 2.4rem 0 2rem;
+}
+
+@media (max-width: 767px) {
+  .section-reviews blockquote {
+    margin: 2.1rem 0;
+  }
+}
+
+.section-reviews blockquote p {
+  margin: 0;
+}
+
+.section-reviews blockquote li a {
+  text-decoration: underline;
+}
+
+.section-reviews blockquote li a:hover {
+  text-decoration: none;
+}
+
+.section-reviews .section__review-author {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.section-reviews .section__review-addition {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.section-reviews .section__pagination {
+  margin-top: 5.4rem;
+}
+
+@media (max-width: 767px) {
+  .section-reviews .section__pagination {
+    margin-top: 2.1rem;
+  }
+}

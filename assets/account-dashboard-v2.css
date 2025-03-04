@@ -1,0 +1,195 @@
+.account-dashboard {
+  padding: 100px 0;
+}
+
+.account__title {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: .03em;
+    color: #1d1d20;
+    margin: 0;
+}
+.account__table {
+  margin-top: 50px;
+}
+.account__table table {
+  text-align: left;
+  width: 100%;
+  box-shadow: none;
+}
+
+.account__table table:not([class]) td, 
+.account__table table:not([class]) th {
+    border: 0;
+    padding: 20px 30px;
+}
+.account__table table th:last-child,
+.account__table table td:last-child {
+  text-align: right;
+}
+
+.account__table table thead tr {
+    background-color: #f6f6f6;
+    border: 6px;
+}
+.account__table table thead tr th {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+    letter-spacing: 0.03em;
+    color: #8F8B54;
+}
+.account__table table tbody tr td {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+    letter-spacing: 0.03em;
+}
+
+.account__table table tbody tr td[data-heading="Order"] a.link{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  letter-spacing: 0.03em;
+  color: #5258F1;
+}
+
+.account__table table tbody tr td .fulfilled {
+  color: #38AE00;
+}
+.account__table table tbody tr td .unfulfilled {
+  color: #FF8328;
+}
+
+
+.account__table--order .coc-d-flex,
+.account__table table tbody tr td .coc-d-flex {
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.account__table--order .coc-button,
+.account__table table tbody tr td .coc-button{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: .03em;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    transition: all .3s linear;
+    padding: 8px 20px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.account__table--order .coc-cancel-button,
+.account__table table tbody tr td .coc-cancel-button{
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #FF4A4A;
+}
+
+.account__table--order .coc-cancel-button:hover,
+.account__table table tbody tr td .coc-cancel-button:hover {
+   background-color: #FF4A4A;
+   border-color: #FF4A4A;
+   color: #fff;
+}
+
+.account__table--order .coc-reorder-button,
+.account__table table tbody tr td .coc-reorder-button{
+  background-color: rgba(249, 249, 249, 1);
+  border-color: rgba(249, 249, 249, 1);
+  color: #588F54;
+}
+
+.account__table--order .coc-reorder-button:hover,
+.account__table table tbody tr td .coc-reorder-button:hover {
+   background-color: #588F54;
+   border-color: #588F54;
+   color: #fff;
+}
+
+.account__body {}
+
+.account__col--orders {}
+
+.account__col--address {}
+
+.account__address {
+  background-color: #F9F9F9;
+  padding: 30px 40px;
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+.account__paging {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .account__table thead {
+    display: none;
+  }
+
+  .account__table table,
+  .account__table tbody,
+  .account__table tfoot,
+  .account__table tr,
+  .account__table td {
+    display: block;
+  }
+
+  .account__table tbody tr + tr,
+  .account__table tfoot {
+    border-top: 0.1rem solid var(--color-form-input-border-light);
+  }
+
+  .account__table table tbody td,
+  .account__table table tfoot td {
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+  }
+
+  .account__table table tbody td::before,
+  .account__table table tfoot td::before {
+    content: attr(data-heading)': ';
+    text-transform: uppercase;
+    opacity: 0.7;
+    display: inline;
+    padding-right: 1rem;
+  }
+}
+
+.account__table table dd p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .account__table--order td[data-heading="Price"] dl {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .account__table--order td[data-heading="Price"] dd {
+    margin: 0 0.3rem;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .account__body {
+    display: block;
+  }
+
+  .account__col--address {
+    width: auto;
+    padding-left: 0;
+  }
+
+  .account__address {
+    text-align: left;
+  }
+}

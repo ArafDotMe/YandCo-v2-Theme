@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "features": {
+      "type": "features",
+      "blocks": {
+        "25cfb011-6eed-4a9a-ba27-bf08a7195c2e": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "truck",
+            "heading": "Free Shipping",
+            "description": "<p>International shipping available for all orders over &99</p>"
+          }
+        },
+        "3b9f2a74-fcec-43e6-9e98-6e638cc9a857": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "card",
+            "heading": "Buy Now. Pay Later",
+            "description": "<p>0% Interest financing available. Pay after 30 days</p>"
+          }
+        },
+        "045a62af-b529-42db-8927-725b4f4c0a2f": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "cash",
+            "heading": "Cashback Reward",
+            "description": "<p>Collect & Redeem on every order that you purchased</p>"
+          }
+        },
+        "a75569b5-6717-4290-ab73-276c5a0a92ce": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "shield-check",
+            "heading": "Secure Payments",
+            "description": "<p>Guarantee 100% secure payments online on our website</p>"
+          }
+        }
+      },
+      "block_order": [
+        "25cfb011-6eed-4a9a-ba27-bf08a7195c2e",
+        "3b9f2a74-fcec-43e6-9e98-6e638cc9a857",
+        "045a62af-b529-42db-8927-725b4f4c0a2f",
+        "a75569b5-6717-4290-ab73-276c5a0a92ce"
+      ],
+      "settings": {
+        "overwrite_colors": true,
+        "color": "#000000",
+        "background": "#f4f4f4",
+        "layout": "left"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "38c0376e-005f-4488-8043-c156d39e71e8": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer",
+            "heading": "About",
+            "link": ""
+          }
+        },
+        "cef3f6cc-ee05-4e5a-921e-cab3d855ecce": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer-menu-2",
+            "heading": "More Info",
+            "link": ""
+          }
+        },
+        "menu_aTbPek": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer-menu-3",
+            "heading": "",
+            "link": ""
+          }
+        },
+        "bf57e342-c1d2-40ef-a2fb-edc5463b13a5": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Newsletter",
+            "subheading": "<p>Add descriptive text to invite your users to sign up for your newsletter.</p>",
+            "show_privacy_note": true,
+            "button_style": "button--style-4"
+          }
+        }
+      },
+      "block_order": [
+        "38c0376e-005f-4488-8043-c156d39e71e8",
+        "cef3f6cc-ee05-4e5a-921e-cab3d855ecce",
+        "menu_aTbPek",
+        "bf57e342-c1d2-40ef-a2fb-edc5463b13a5"
+      ],
+      "settings": {
+        "overwrite_colors": false,
+        "color": "#000000",
+        "background": "#ffffff",
+        "enable_fullwidth": false,
+        "enable_payment_icons": true,
+        "enable_follow_on_shop": true,
+        "logo_svg": "",
+        "logo_width_desktop": 150,
+        "logo_width_mobile": 150,
+        "addresses": "<p>Box No. 4958, Dubai, Emirates.</p>",
+        "phone": "+123456789",
+        "email": "youremail@example.com"
+      }
+    }
+  },
+  "order": [
+    "features",
+    "footer"
+  ]
+}

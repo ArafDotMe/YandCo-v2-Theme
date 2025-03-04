@@ -1,0 +1,21 @@
+@media (max-width: 1023px) {
+  .featured-collection .featured__list {
+    display: block;
+  }
+
+  .featured-collection .featured__list li + li {
+    margin-top: 2.5rem;
+  }
+}
+
+.featured__actions {
+  margin-top: 2rem;
+}
+
+.featured__actions--center {
+  text-align: center;
+}
+
+.featured__actions--right {
+  text-align: right;
+}

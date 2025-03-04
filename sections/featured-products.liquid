@@ -1,0 +1,235 @@
+{%- assign resources = section.settings.collection.products | default: section.settings.product_list | default: nil -%}
+
+<link rel="stylesheet" href="{{ 'component-products-feed.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>
+  {{- 'component-products-feed.css' | asset_url | stylesheet_tag -}}
+</noscript>
+
+<script src="{{ 'products-carousel.js' | asset_url }}" defer="defer"></script>
+
+{%- render 'products-feed',
+  element: 'products-carousel',
+  type: 'slider',
+  _section: section.settings,
+  resources: resources
+-%}
+
+{% schema %}
+{
+  "name": "t:sections.featured-products.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "overwrite_colors",
+      "label": "t:sections.global.settings.overwrite_colors.label"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:sections.global.settings.colors.text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:sections.global.settings.colors.background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_fullwidth",
+      "label": "t:sections.global.settings.enable_wide.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "focus",
+      "label": "t:sections.featured-products.settings.focus.label",
+      "info": "t:sections.featured-products.settings.focus.info"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "t:sections.featured-products.settings.products_limit.label",
+      "min": 6,
+      "max": 50,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-products.settings.collection.label",
+      "info": "t:sections.featured-products.settings.collection.info"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:sections.featured-products.settings.product_list.label",
+      "info": "t:sections.featured-products.settings.product_list.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.section_headers.text_content"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "t:sections.global.settings.horizontal_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.global.settings.horizontal_alignment.options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.global.settings.horizontal_alignment.options.center"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.global.settings.horizontal_alignment.options.right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "pre_heading",
+      "label": "t:sections.global.settings.subheading.label",
+      "default": "Add a tagline"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "t:sections.global.settings.heading.label",
+      "default": "List your featured products here"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.section_headers.button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.global.settings.button_label.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.global.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_position",
+      "label": "t:sections.featured-products.settings.button_position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.global.settings.horizontal_alignment.options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.global.settings.horizontal_alignment.options.center"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.global.settings.horizontal_alignment.options.right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.global.settings.button_style.label",
+      "options": [
+        {
+          "value": "button--style-1",
+          "label": "t:sections.global.settings.button_style.options.style_one"
+        },
+        {
+          "value": "button--style-2",
+          "label": "t:sections.global.settings.button_style.options.style_two"
+        },
+        {
+          "value": "button--style-3",
+          "label": "t:sections.global.settings.button_style.options.style_three"
+        },
+        {
+          "value": "button--style-4",
+          "label": "t:sections.global.settings.button_style.options.style_four"
+        }
+      ],
+      "default": "button--style-2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.section_headers.slideshow"
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "t:sections.global.settings.arrows.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.global.settings.autoplay.label"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:sections.global.settings.autoplay_interval.label",
+      "unit": "s",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "products_count_desktop",
+      "label": "t:sections.featured-products.settings.products_count_desktop.label",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "products_count_tablet",
+      "label": "t:sections.featured-products.settings.products_count_tablet.label",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "products_count_mobile",
+      "label": "t:sections.featured-products.settings.products_count_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-products.name"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

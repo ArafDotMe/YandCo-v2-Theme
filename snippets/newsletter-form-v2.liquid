@@ -1,0 +1,74 @@
+{%- comment -%}
+  Accepts:
+  - namespace {String} - an unique id for the form fields.
+  - js_class? {String} - JS selector class
+  Usage:
+  {% render 'newsletter-form' %}
+
+{%- endcomment -%}
+
+<script src="{{- 'form-validation.js' | asset_url -}}" defer></script>
+
+{%-
+  liquid
+  assign class = 'contact-form ' | append: js_class
+  assign namespace = namespace | default: ''
+  assign form_id = 'contact-form-banner-' | append: namespace
+-%}
+<form-validation>
+  {%- form 'customer', class: class, id: form_id -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+    {%-
+      liquid
+      if form.errors
+        assign message = form.errors.translated_fields['email'] | capitalize | append: ' ' | append: form.errors.messages['email']
+        assign has_error = true
+      elsif form.posted_successfully?
+        assign message = 'newsletter_form.success' | t
+      endif
+    -%}
+
+    {%- if message -%}
+      <small
+        class="newsletter-banner__message {% if has_error %}field__error{% else %}color-subdued{% endif %}"
+        {% if message and has_error == false %}
+          tabindex="-1"
+          autofocus
+        {% endif %}
+      >
+        <p>{{- message -}}</p>
+      </small>
+    {%- endif -%}
+
+    <div class="newsletter-banner__inner">
+      <div class="form-row">
+        {%-
+          liquid
+          assign placeholder = 'newsletter_form.email.placeholder' | t
+          capture attr
+            echo 'aria-required="true" '
+            echo 'autocapitalize="off" '
+            echo 'autocomplete="email" '
+            if form.errors
+              echo 'autofocus '
+            endif
+          endcapture
+          assign id = 'NewsletterForm--' | append: section.id
+          render 'text-input', id: id, label: label, type: 'email', name: 'contact[email]', placeholder: placeholder, attr: attr, required: true, value: form.email
+        -%}
+      </div><!-- /.form-row -->
+
+      <div class="form-row newsletter_btn">
+        {%-
+          liquid
+          assign value = '<svg viewBox="0 0 15 16" xmlns="http://www.w3.org/2000/svg"><path d="M0.25 8.74855H4.75V7.24855H0.25V0.382812C0.25 0.175707 0.417895 0.0078125 0.625 0.0078125C0.688188 0.0078125 0.750355 0.02378 0.80572 0.05423L14.6525 7.66998C14.8341 7.7698 14.9003 7.9978 14.8005 8.1793C14.7662 8.24163 14.7149 8.29293 14.6525 8.3272L0.80572 15.9429C0.62425 16.0428 0.396227 15.9765 0.296417 15.7951C0.265967 15.7397 0.25 15.6776 0.25 15.6144V8.74855Z" fill-opacity="0.7"/></svg>'
+          assign id = 'Subscribe-' | append: section.id
+          render 'button', type: 'submit', name: 'commit', id: id, value: value, style: ''
+          assign value = nil
+          assign id = nil
+        -%}
+      </div><!-- /.form-row -->
+    </div><!-- /.newsletter-banner__inner -->
+  {%- endform -%}
+</form-validation>

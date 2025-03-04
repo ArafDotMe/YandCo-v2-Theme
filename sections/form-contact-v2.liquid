@@ -1,0 +1,222 @@
+{{- 'section-form-contact.css' | asset_url | stylesheet_tag -}}
+
+<script src="{{- 'form-validation.js' | asset_url -}}" defer></script>
+
+<style>
+  {% if section.settings.overwrite_colors %}
+    .section-form-contact--{{ section.id }} {
+      --background: {{ section.settings.background }};
+      --color-block: {{ section.settings.color_block }};
+    }
+  {% endif %}
+
+  .section-form-contact--{{ section.id }} {
+    --background-block: {{ section.settings.background_block }};
+  }
+</style>
+
+<section class="section section-form-contact section-form-contact--{{ section.id }}">
+  <div class="section__container container container--narrow">
+
+    <div class="center">
+      <h1 class="section__heading ">
+        Have Questions? <br />
+        Let’s Connect
+      </h1>
+      <p class="section__pre-heading">We’d love to hear from you! Whether you have inquiries about our products, need custom textile solutions, or want to collaborate, our team is here to assist you.</p>
+    </div>
+    
+    <form-validation>
+      {%- form 'contact', id: 'ContactForm' -%}
+        {%- if form.posted_successfully? -%}
+          <h3 class="h4 caption-ffb" tabindex="-1" autofocus>{{- 'contact.form.success' | t -}}</h3><!-- /.h4 -->
+        {%- elsif form.errors -%}
+          <div class="color-red">
+            <p>{{ 'contact.form.errors_message' | t }}</p>
+            {{- form.errors | default_errors -}}
+          </div><!-- /.color-red -->
+        {%- endif -%}
+
+        <div class="form-row form-row--double">
+          {%-
+            liquid
+            assign label = 'contact.form.name' | t
+            capture attr
+              echo 'autocomplete="name"'
+            endcapture
+            if form.name
+              assign value = form.name
+            elsif customer
+              assign value = customer.name
+            else
+              assign value = ''
+            endif
+            render 'text-input', id: 'ContactForm-name', placeholder: label, name: 'contact[Name]', attr: attr, value: value
+          -%}
+
+          {%-
+            liquid
+            assign label = 'contact.form.phone' | t
+            capture attr
+              echo 'autocomplete="phone"'
+            endcapture
+            if form.phone
+              assign value = form.phone
+            elsif customer
+              assign value = customer.phone
+            else
+              assign value = ''
+            endif
+            render 'text-input', id: 'ContactForm-phone', placeholder: label, phone: 'contact[Phone]', attr: attr, value: value
+          -%}
+        </div><!-- /.form-row form-row--double -->
+
+        <div class="form-row">
+          {%-
+            liquid
+            assign label = 'contact.form.email' | t | append: ' <span class="color-red" aria-hidden="true">*</span>'
+            capture attr
+              echo 'autocomplete="email"'
+              echo 'spellcheck="false"'
+              echo 'autocapitalize="off"'
+              echo 'aria-required="true"'
+            endcapture
+            if form.email
+              assign value = form.email
+            elsif customer
+              assign value = customer.email
+            else
+              assign value = ''
+            endif
+            if form.errors contains 'email'
+              assign error = form.errors.translated_fields['email'] | capitalize | append: ' ' | append: form.errors.messages['email']
+              assign has_error = true
+            endif
+            render 'text-input', id: 'ContactForm-email', type: 'email', placeholder: 'Email', name: 'contact[email]', attr: attr, value: value, has_error: has_error, message: error
+          -%}
+        </div>
+
+        <div class="form-row">
+          {%-
+            liquid
+            assign label = 'contact.form.subject' | t
+            capture attr
+              echo 'autocomplete="subject"'
+            endcapture
+            if form.subject
+              assign value = form.subject
+            elsif customer
+              assign value = customer.subject
+            else
+              assign value = ''
+            endif
+            render 'text-input', id: 'ContactForm-subject', placeholder: label, name: 'contact[Subject]', attr: attr, value: value
+          -%}
+        </div><!-- /.form-row -->
+
+        <div class="form-row">
+          {%-
+            liquid
+            assign label = 'contact.form.message' | t
+            assign name = 'contact[' | append: label | append: ']'
+            render 'textarea-input', id: 'ContactForm-body', placeholder: label, name: name, body: form.body
+          -%}
+        </div><!-- /.form-row -->
+
+        <div class="form-row">
+          {%- assign value = 'contact.form.submit' | t -%}
+          {%- render 'button', type: 'submit', style: section.settings.button_style, value: value -%}
+          {%- assign value = nil -%}
+        </div><!-- /.form-row -->
+      {%- endform -%}
+    </form-validation>
+    
+    <div class="section__contact-box section__head--center">
+      {% comment %}<h1 class="section__contact-box--heading">Send your queries to our email</h1>{% endcomment %}
+      <div class="contact-box--row">
+        <div class="contact-box--col-1">
+          <div class="section__contact-box--text">
+             <h4 class="contact-box--title">Email:</h4>
+             <p>support@yandco.ae</p>
+           </div>
+          <div class="section__contact-box--text">
+             <h4 class="contact-box--title">Contact No:</h4>
+             <p>+971 56 737 3325</p>
+           </div>
+        </div> <!-- /contact-box--col-1 -->
+        
+        <div class="contact-box--col-2">
+           <div class="section__contact-box--text">
+             <h4 class="contact-box--title">Address:</h4>
+             <p>
+                Y N C APPAREL TRADING L.L.C
+                <br/>Building Name/No: Madina Mall, <br/>Land Area: Muhaisanah Fourth,<br/>
+                Dubai, 55080, United Arab Emirates.
+             </p>
+           </div>
+        </div> <!-- /contact-box--col-2 -->
+      </div> <!-- /contact-box--row -->
+    </div>
+  </div><!-- /.container container--narrow -->
+</section><!-- /.container--narrow -->
+
+{% schema %}
+{
+  "name": "Contact Page v2",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "overwrite_colors",
+      "label": "t:sections.global.settings.overwrite_colors.label"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:sections.global.settings.colors.background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background_block",
+      "label": "t:sections.form-contact.settings.background_block.label",
+      "default": "#F4F4F4"
+    },
+    {
+      "type": "color",
+      "id": "color_block",
+      "label": "t:sections.form-contact.settings.color_block.label",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.global.settings.button_style.label",
+      "options": [
+        {
+          "value": "button--style-1",
+          "label": "t:sections.global.settings.button_style.options.style_one"
+        },
+        {
+          "value": "button--style-2",
+          "label": "t:sections.global.settings.button_style.options.style_two"
+        },
+        {
+          "value": "button--style-3",
+          "label": "t:sections.global.settings.button_style.options.style_three"
+        },
+        {
+          "value": "button--style-4",
+          "label": "t:sections.global.settings.button_style.options.style_four"
+        }
+      ],
+      "default": "button--style-2"
+    }
+  ],
+  "limit": 1,
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

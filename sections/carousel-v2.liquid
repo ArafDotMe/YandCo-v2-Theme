@@ -1,0 +1,74 @@
+{{- 'carousel-v2.css' | asset_url | stylesheet_tag: preload: true -}}
+
+{% if template.name == 'index' %}
+  <!-- Banner Start -->
+  <div class="banner-section banner-active">
+      <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                  <a href="{{ block.settings.collectiom_url }}">
+                    <div class="banner-item desktop">
+                      <img src="{{ block.settings.image_desktop | image_url }}" alt="Banner" width="" height="" />
+                    </div>
+                    <div class="banner-item mobile">
+                      <img src="{{ block.settings.image_desktop | image_url }}" alt="Banner" width="" height="" />
+                    </div>
+                  </a>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="banner-wrapper">
+              <div class="button-prev">
+                  <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.8713 8.24773L9.8943 4.22472L8.83365 3.16406L3 8.99773L8.83365 14.8313L9.8943 13.7707L5.8713 9.74773H15V8.24773H5.8713Z" />
+                  </svg>
+              </div>
+              <div class="pagination"></div>
+              <div class="button-next">
+                  <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.1287 8.24773L8.1057 4.22472L9.16635 3.16406L15 8.99773L9.16635 14.8313L8.1057 13.7707L12.1287 9.74773H3V8.24773H12.1287Z" />
+                  </svg>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Banner End -->
+{% endif %}
+
+<script src="{{ 'carousel-v2.js' | asset_url }}" defer="defer"></script>                      
+                          
+{% schema %}
+  {
+    "name": "Carousel v2",
+    "settings": [],
+    "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktom Slide",
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Slide",
+        },
+        {
+          "type": "collection",
+          "id": "collectiom_url",
+          "label": "Select Collection",
+        }
+      ]
+    }
+    ],
+    "presets": [
+    {
+      "name": "Carousel v2"
+    }
+  ],
+  }
+{% endschema %}

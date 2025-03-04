@@ -1,0 +1,1 @@
+{"sections":{"main":{"type":"main-collection","settings":{"enable_fullwidth":false,"page-title":"{{ collection.title }}","enable_filters":true,"filters_layout":"vertical","enable_sorting":true,"products_per_row":"4","products_per_row_mobile":"2","products_per_page":16,"infinite_scroll":true}}},"order":["main"]}

@@ -1,0 +1,126 @@
+.shop-collection-section {
+  padding-top: 100px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .shop-collection-section {
+    padding-top: 80px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .shop-collection-section {
+    padding-top: 60px;
+  }
+}
+
+.shop-collection-nav {
+  display: flex;
+}
+.shop-collection-nav .button-prev, .shop-collection-nav .button-next {
+  font-size: 20px;
+  color: #08080f;
+  width: 55px;
+  height: 55px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s linear;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (max-width: 767px) {
+  .shop-collection-nav .button-prev, .shop-collection-nav .button-next {
+    width: 45px;
+    height: 45px;
+  }
+}
+.shop-collection-nav .button-prev svg, .shop-collection-nav .button-next svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+.shop-collection-nav .button-prev:hover, .shop-collection-nav .button-next:hover {
+  border-color: rgba(0, 0, 0, 0.07);
+  background-color: #f7f8f9;
+}
+
+.shop-collection-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 40px;
+}
+
+.collection-item {
+  position: relative;
+}
+.collection-item-image {
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+}
+.collection-item-image img {
+  width: 100%;
+  height: auto;
+}
+.collection-item-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.collection-item-btn {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: .02em;
+    padding: 12px 20px 11px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    color: #08080f;
+    background-color: #fff;
+    transition: all .3s linear;
+    text-decoration: none;
+}
+@media only screen and (max-width: 575px) {
+  .collection-item-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+.collection-item-btn .icon {
+  font-size: 16px;
+  margin-left: 10px;
+  line-height: 0;
+}
+@media only screen and (max-width: 575px) {
+  .collection-item-btn .icon {
+    font-size: 15px;
+    margin-left: 6px;
+  }
+}
+.collection-item-btn .icon svg {
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+}
+.collection-item-btn:hover {
+  background-color: #8f8b54;
+  color: #fff;
+}
+
+
+/* RTL CSS  */
+
+[dir="rtl"] .shop-collection-nav {
+    flex-direction: row-reverse;
+}
+[dir="rtl"] .collection-item-btn {
+    flex-direction: row-reverse;
+}
+
+
+
+
+
+

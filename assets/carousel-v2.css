@@ -1,0 +1,113 @@
+.banner-active .swiper-slide a {
+  display: flex;
+}
+
+.banner-item {
+    display: flex!important;
+    width: 100%;
+}
+.banner-item img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .banner-item.desktop {
+    display: none !important;
+  }
+}
+.banner-item.mobile {
+  display: none !important;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .banner-item.mobile {
+    display: flex !important;
+  }
+}
+
+.banner-wrapper {
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 14px 20px;
+  align-items: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .banner-wrapper {
+    position: relative;
+     bottom: auto;
+    left: auto;
+    transform: translateX(0);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .banner-wrapper {
+    padding: 10px;
+    bottom: 15px;
+  }
+}
+.banner-wrapper .button-next, .banner-wrapper .button-prev {
+  line-height: 0;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.banner-wrapper .button-next svg, .banner-wrapper .button-prev svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+.banner-wrapper .button-next:hover, .banner-wrapper .button-prev:hover {
+  color: #000;
+}
+.banner-wrapper .button-next {
+  margin-left: 10px;
+}
+.banner-wrapper .button-prev {
+  margin-right: 10px;
+}
+.banner-wrapper .pagination {
+  display: flex;
+  padding-top: 0;
+}
+.banner-wrapper .pagination .swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 0;
+  opacity: 1;
+  background: none;
+  margin: 0 10px;
+  transition: all 0.3s linear;
+}
+@media only screen and (max-width: 767px) {
+  .banner-wrapper .button-next {
+    margin-left: 5px;
+  }
+  .banner-wrapper .button-prev {
+    margin-right: 5px;
+  }
+  .banner-wrapper .pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+  }
+}
+.banner-wrapper .pagination .swiper-pagination-bullet-active {
+  background-color: #000;
+}
+
+
+/* RTL CSS  */
+
+[dir="rtl"] .banner-wrapper {
+    flex-direction: row-reverse;
+}
+
+
+

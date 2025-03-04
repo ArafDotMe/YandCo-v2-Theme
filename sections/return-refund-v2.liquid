@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="{{ 'return-refund-v2.css' | asset_url }}" media="print" onload="this.media='all'">
+    
+<!-- Return & Refund Start -->
+<div class="return-refund-section">
+    <div class="container">
+        <div class="return-refund-banner">
+            <div class="return-refund-banner--content">
+                <h2 class="return-refund-banner--title">
+                    {{ page_title }}
+                </h2>
+                <p>
+                    {{ section.settings.subtitle }}
+                </p>
+            </div>
+            <div class="return-refund-banner--image">
+                <img src="{{ 'return-refund.svg' | asset_url }}" alt="return-refund" loading="lazy" width="" height="">
+            </div>
+        </div>
+
+      {% if section.blocks.size > 0 %}
+        <div class="return-refund-content">
+          {% for block in section.blocks %}
+            <div class="return-refund-item">
+                <h4 class="return-refund-item--title">
+                  {{ block.settings.heading }}
+                </h4>
+                {{ block.settings.content }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+</div>
+<!-- Return & Refund End -->
+
+{% schema %}
+{
+  "name": "Return & Refund Policy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Page Subtitle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "policy",
+      "name": "Policy",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Return & Refund Policy",
+      "blocks": [
+        {
+          "type": "policy"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

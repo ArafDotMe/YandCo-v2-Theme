@@ -1,0 +1,143 @@
+.newsletter {
+  /* max-width: 36rem; */
+}
+
+@media (max-width: 767px) {
+  .newsletter {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+.newsletter .newsletter__heading {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  color: #08080f;
+  margin: 0;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .newsletter .newsletter__heading {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .newsletter .newsletter__heading {
+    font-size: 28px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .newsletter .newsletter__heading {
+    font-size: 24px;
+  }
+}
+
+
+.newsletter .newsletter__subheading {
+  margin: 3.6rem 0 2.4rem;
+  opacity: 0.8;
+}
+
+.newsletter .newsletter__controls {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.newsletter .newsletter__successfully-message {
+  opacity: 0.8;
+}
+
+.footer-newsletter-input:focus {
+  border-color: #000;
+}
+.newsletter input[type="email"] {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 10px 30px;
+  outline: none;
+  flex: 1;
+  border-radius: 30px;
+  color: rgba(0, 0, 0, 0.6);
+  box-shadow: -5px 14px 30px 0px rgba(0, 0, 0, 0.05);
+}
+.newsletter input[type="email"]:focus {
+  border-color: #000;
+}
+@media (max-width: 1023px) {
+  .newsletter input[type="email"] {
+    width: 100%;
+    padding: 0 2.4rem;
+  }
+}
+.newsletter input[type="email"]::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+.newsletter input[type="email"]:focus-visible {
+  border-color: currentColor;
+}
+
+.newsletter button[type="submit"] {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  flex-shrink: 0;
+  margin-left: 10px;
+  line-height: 0;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (max-width: 479px) {
+  .newsletter button[type="submit"] {
+    margin-top: 15px;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.newsletter button[type="submit"] svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+.newsletter button[type="submit"]:hover {
+  background-color: #8f8b54;
+  border-color: #8f8b54;
+}
+
+
+
+
+
+.newsletter .newsletter__policy {
+  margin: 20px 0 0;
+  opacity: 0.8;
+}
+
+.newsletter .newsletter__policy a {
+  text-decoration: underline;
+}
+
+.newsletter .newsletter__policy a:hover {
+  text-decoration: none
+}
+
+
+/* RTL CSS  */
+
+[dir="rtl"] .newsletter .newsletter__controls {
+      flex-direction: row-reverse;
+}
+
+
+
+
+

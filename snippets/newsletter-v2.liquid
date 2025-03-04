@@ -1,0 +1,70 @@
+{%- comment -%}
+  Accepts:
+  - heading {String} Heading
+  - subheading {String} Body text
+  - show_privacy_note {Boolean} Show privacy note
+  - button_style {String} Button style
+
+  Usage:
+  {% render 'newsletter' heading: _block.heading, subheading: _block.subheading, show_privacy_note: _block.show_privacy_note %}
+{%- endcomment -%}
+
+<link rel="stylesheet" href="{{ 'newsletter-v2.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>
+  {{- 'newsletter-v2.css' | asset_url | stylesheet_tag -}}
+</noscript>
+
+<script src="{{- 'form-validation.js' | asset_url -}}" defer></script>
+
+<form-validation>
+  <div class="newsletter">
+    {% if heading != blank %}
+      <h5 class="newsletter__heading caption-ffb">{{ heading }}</h5><!-- /.newsletter__heading -->
+    {% endif %}
+
+    {% if subheading != blank %}
+      <p class="newsletter__subheading">{{ subheading }}</p><!-- /.newsletter__subheading -->
+    {% endif %}
+
+    {% form 'customer', id: 'Contact-Form-Newsletter' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+
+      {%- if form.posted_successfully? -%}
+        <p class="newsletter__successfully-message">{{ 'newsletter.successfully' | t }}</p>
+
+      {% elsif form.errors %}
+        <p>{{ 'newsletter.error' | t }}</p>
+      {%- endif -%}
+
+      <div class="newsletter__controls">
+        <label hidden for="NewsletterForm--{{ section.id }}">{{ 'newsletter.your_email' | t }}</label>
+
+        <input
+          id="NewsletterForm--{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"
+          placeholder="{{ 'newsletter.your_email' | t }}"
+        />
+
+        <button type="submit" class="newsletter-btn">
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.25 9.74855H6.75V8.24855H2.25V1.38281C2.25 1.17571 2.41789 1.00781 2.625 1.00781C2.68819 1.00781 2.75035 1.02378 2.80572 1.05423L16.6525 8.66998C16.8341 8.7698 16.9003 8.9978 16.8005 9.1793C16.7662 9.24163 16.7149 9.29293 16.6525 9.3272L2.80572 16.9429C2.62425 17.0428 2.39623 16.9765 2.29642 16.7951C2.26597 16.7397 2.25 16.6776 2.25 16.6144V9.74855Z"></path>
+          </svg>
+        </button>
+      </div><!-- /.newsletter__controls -->
+    {% endform %}
+
+    <span data-error class="invalid-email-error hidden">
+      {% render 'icon-info-circle' %}
+
+      {{ 'general.validation.invalid_email' | t }}
+    </span><!-- /.invalid-email-error -->
+
+    {% if show_privacy_note %}
+      <p class="newsletter__policy">{{ 'newsletter.privacy_policy_link_html' | t }}</p><!-- /.newsletter__policy -->
+    {% endif %}
+  </div><!-- /.newsletter -->
+</form-validation>
+

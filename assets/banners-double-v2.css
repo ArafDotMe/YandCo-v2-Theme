@@ -1,0 +1,57 @@
+.banner-add-section {
+  padding-top: 70px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .banner-add-section {
+    padding-top: 50px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .banner-add-section {
+    padding-top: 30px;
+  }
+}
+
+.banner-add-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.banner-add-col-1 {
+  width: 58.33%;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 767px) {
+  .banner-add-col-1 {
+    width: 100%;
+  }
+}
+
+.banner-add-col-2 {
+  width: 41.66%;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 767px) {
+  .banner-add-col-2 {
+    width: 100%;
+  }
+}
+
+.banner-add-item {
+  margin-top: 30px;
+}
+.banner-add-item a {
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.banner-add-item a img {
+  width: 100%;
+  height: auto;
+  transition: all 0.3s linear;
+}
+.banner-add-item a:hover img {
+  transform: scale(1.05);
+}

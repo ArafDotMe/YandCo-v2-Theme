@@ -1,0 +1,33 @@
+  <div class="footer__bottom">
+    <div class="container {% if section.settings.enable_fullwidth %}container--fullwidth{% endif %}">
+      <div class="footer__row">
+        <div class="footer__col">
+          <div class="footer__translator">
+            <!-- translator -->
+          </div><!-- /.footer__copyright -->
+        </div><!-- /.footer__col -->
+
+        <div class="footer__col">
+          <div class="footer__copyright">
+            {%- assign powered_by_link_text = powered_by_link | strip_html | strip -%}
+            <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All Rights Reserved.</p>
+          </div><!-- /.footer__copyright -->
+        </div><!-- /.footer__col -->
+
+        <div class="footer__col">
+          <div class="footer__payment">
+            <img src="https://i.imgur.com/TcQ9oHe.png">
+          </div><!-- /.footer__copyright -->
+        </div><!-- /.footer__col -->
+
+      </div><!-- /footer__row -->
+    </div><!-- /.container -->
+  </div><!-- /.footer__bottom -->
+</footer><!-- /.footer -->
+
+{% schema %}
+  {
+    "name": "Footer Copyright",
+    "settings": []
+  }
+{% endschema %}
