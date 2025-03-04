@@ -1,1 +1,161 @@
-{"sections":{"featured_collections_v2_6ebTjf":{"type":"featured-collections-v2","blocks":{"collection_PU9gHT":{"type":"collection","settings":{"collectiom_name":"Boys","image_desktop":"shopify:\/\/shop_images\/Boys-03_c2b01077-8a24-41a5-83c8-526938d70122.jpg","collectiom_url":"shopify:\/\/collections\/boys"}},"collection_jtcCaY":{"type":"collection","settings":{"collectiom_name":"Girls","image_desktop":"shopify:\/\/shop_images\/Girls01.jpg","collectiom_url":"shopify:\/\/collections\/girls"}},"collection_PVAdcB":{"type":"collection","settings":{"collectiom_name":"Exclusive","image_desktop":"shopify:\/\/shop_images\/Exclusive_740843b4-bb09-421e-9e33-595e53761242.jpg","collectiom_url":"shopify:\/\/collections\/best-deals"}},"collection_BR6BqA":{"type":"collection","settings":{"collectiom_name":"All Products","image_desktop":"shopify:\/\/shop_images\/Category_5051b618-442f-4e3a-ba0d-461731f5be0a.jpg","collectiom_url":"shopify:\/\/collections\/shop"}}},"block_order":["collection_PU9gHT","collection_jtcCaY","collection_PVAdcB","collection_BR6BqA"],"settings":{"title":"Shop by Collection","margin_top":100,"margin_bottom":0}},"featured_products_v2_mLdYz6":{"type":"featured-products-v2","settings":{"overwrite_colors":false,"color":"#ea3030","background":"#ffffff","enable_fullwidth":false,"focus":false,"products_limit":10,"collection":"","product_list":["gems-unicorn-t-shirt","flamingo-friends-t-shirt","denim-shank-jacket-for-girls","regular-bow-shorts","girls-cityscape-jacket","flying-flower-girl-t-shirt","rose-flamingo-hoodie","denim-mini-classic-skirt","rib-lettuce-polo","garden-pocket-dungaree"],"horizontal_alignment":"center","pre_heading":"Explore our thoughtfully curated collection, crafted with the finest materials to ensure comfort.","heading":"Featured Products","button_label":"","button_link":"shopify:\/\/collections\/all-products","button_position":"center","button_style":"button--style-2","arrows":false,"autoplay":true,"autoplay_speed":5,"products_count_desktop":4,"products_count_tablet":3,"products_count_mobile":"2"}},"banners_double_v2_39RzgD":{"type":"banners-double-v2","settings":{"image_1_desktop":"shopify:\/\/shop_images\/831x500-585x500-banners_82baa9a3-8e7d-46c4-98dd-2018b7652baa.jpg","image_1_mobile":"shopify:\/\/shop_images\/831x500-585x500-banners_82baa9a3-8e7d-46c4-98dd-2018b7652baa.jpg","url_1":"shopify:\/\/collections\/shop","image_2_desktop":"shopify:\/\/shop_images\/831x500-585x500-banners-02.jpg","image_2_mobile":"shopify:\/\/shop_images\/831x500-585x500-banners-02.jpg","url_2":"shopify:\/\/collections\/girls","space_top":0,"space_bottom":0}},"featured_products_v2_LWz8iB":{"type":"featured-products-v2","settings":{"overwrite_colors":false,"color":"#000000","background":"#ffffff","enable_fullwidth":false,"focus":false,"products_limit":10,"collection":"","product_list":["hd-dino-t-shirt","cutie-dino-t-shirt","car-collection-t-shirt","cutie-bunny-t-shirt","lace-frill-tops","splash-skating-t-shirt","kids-outer-space-boxer-set"],"horizontal_alignment":"center","pre_heading":"Explore our thoughtfully curated collection, crafted with the finest materials to ensure comfort.","heading":"Our Products","button_label":"View All Products","button_link":"shopify:\/\/collections\/shop","button_position":"center","button_style":"button--style-2","arrows":false,"autoplay":true,"autoplay_speed":5,"products_count_desktop":4,"products_count_tablet":3,"products_count_mobile":"2"}},"172855910814d7e882":{"type":"apps","settings":{}},"featured_video_v2_cJGxBd":{"type":"featured-video-v2","settings":{"vdo_id":"","margin_top":0,"margin_bottom":0}}},"order":["featured_collections_v2_6ebTjf","featured_products_v2_mLdYz6","banners_double_v2_39RzgD","featured_products_v2_LWz8iB","172855910814d7e882","featured_video_v2_cJGxBd"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured_collections_v2_6ebTjf": {
+      "type": "featured-collections-v2",
+      "blocks": {
+        "collection_PU9gHT": {
+          "type": "collection",
+          "settings": {
+            "collectiom_name": "Boys",
+            "image_desktop": "shopify://shop_images/Boys-01.jpg",
+            "collectiom_url": "shopify://collections/boys"
+          }
+        },
+        "collection_jtcCaY": {
+          "type": "collection",
+          "settings": {
+            "collectiom_name": "Girls",
+            "image_desktop": "shopify://shop_images/Girl.jpg",
+            "collectiom_url": "shopify://collections/girls"
+          }
+        },
+        "collection_PVAdcB": {
+          "type": "collection",
+          "settings": {
+            "collectiom_name": "Exclusive",
+            "image_desktop": "shopify://shop_images/Exclusive.jpg",
+            "collectiom_url": "shopify://collections/best-deals"
+          }
+        },
+        "collection_BR6BqA": {
+          "type": "collection",
+          "settings": {
+            "collectiom_name": "All Products",
+            "image_desktop": "shopify://shop_images/All-Product.jpg",
+            "collectiom_url": "shopify://collections/shop"
+          }
+        }
+      },
+      "block_order": [
+        "collection_PU9gHT",
+        "collection_jtcCaY",
+        "collection_PVAdcB",
+        "collection_BR6BqA"
+      ],
+      "settings": {
+        "title": "Shop by Collection",
+        "margin_top": 100,
+        "margin_bottom": 0
+      }
+    },
+    "featured_products_v2_mLdYz6": {
+      "type": "featured-products-v2",
+      "settings": {
+        "overwrite_colors": false,
+        "color": "#ea3030",
+        "background": "#ffffff",
+        "enable_fullwidth": false,
+        "focus": false,
+        "products_limit": 10,
+        "collection": "",
+        "product_list": [
+          "gems-unicorn-t-shirt",
+          "flamingo-friends-t-shirt",
+          "denim-shank-jacket-for-girls",
+          "regular-bow-shorts",
+          "girls-cityscape-jacket",
+          "flying-flower-girl-t-shirt",
+          "rose-flamingo-hoodie",
+          "denim-mini-classic-skirt",
+          "rib-lettuce-polo",
+          "garden-pocket-dungaree"
+        ],
+        "horizontal_alignment": "center",
+        "pre_heading": "Explore our thoughtfully curated collection, crafted with the finest materials to ensure comfort.",
+        "heading": "Featured Products",
+        "button_label": "",
+        "button_link": "shopify://collections/all-products",
+        "button_position": "center",
+        "button_style": "button--style-2",
+        "arrows": false,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "products_count_desktop": 4,
+        "products_count_tablet": 3,
+        "products_count_mobile": "2"
+      }
+    },
+    "banners_double_v2_39RzgD": {
+      "type": "banners-double-v2",
+      "settings": {
+        "url_1": "shopify://collections/shop",
+        "url_2": "shopify://collections/girls",
+        "space_top": 0,
+        "space_bottom": 0
+      }
+    },
+    "featured_products_v2_LWz8iB": {
+      "type": "featured-products-v2",
+      "settings": {
+        "overwrite_colors": false,
+        "color": "#000000",
+        "background": "#ffffff",
+        "enable_fullwidth": false,
+        "focus": false,
+        "products_limit": 10,
+        "collection": "",
+        "product_list": [
+          "hd-dino-t-shirt",
+          "cutie-dino-t-shirt",
+          "car-collection-t-shirt",
+          "cutie-bunny-t-shirt",
+          "lace-frill-tops",
+          "splash-skating-t-shirt",
+          "kids-outer-space-boxer-set"
+        ],
+        "horizontal_alignment": "center",
+        "pre_heading": "Explore our thoughtfully curated collection, crafted with the finest materials to ensure comfort.",
+        "heading": "Our Products",
+        "button_label": "View All Products",
+        "button_link": "shopify://collections/shop",
+        "button_position": "center",
+        "button_style": "button--style-2",
+        "arrows": false,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "products_count_desktop": 4,
+        "products_count_tablet": 3,
+        "products_count_mobile": "2"
+      }
+    },
+    "172855910814d7e882": {
+      "type": "apps",
+      "settings": {}
+    },
+    "featured_video_v2_cJGxBd": {
+      "type": "featured-video-v2",
+      "settings": {
+        "vdo_id": "",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "featured_collections_v2_6ebTjf",
+    "featured_products_v2_mLdYz6",
+    "banners_double_v2_39RzgD",
+    "featured_products_v2_LWz8iB",
+    "172855910814d7e882",
+    "featured_video_v2_cJGxBd"
+  ]
+}
