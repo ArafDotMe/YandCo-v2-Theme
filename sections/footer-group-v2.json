@@ -61,24 +61,15 @@
         "38c0376e-005f-4488-8043-c156d39e71e8": {
           "type": "menu",
           "settings": {
-            "menu": "footer",
+            "menu": "info",
             "heading": "Info",
-            "link": ""
-          }
-        },
-        "cef3f6cc-ee05-4e5a-921e-cab3d855ecce": {
-          "type": "menu",
-          "disabled": true,
-          "settings": {
-            "menu": "",
-            "heading": "Promotion",
             "link": ""
           }
         },
         "menu_aTbPek": {
           "type": "menu",
           "settings": {
-            "menu": "",
+            "menu": "policies",
             "heading": "Policies",
             "link": ""
           }
@@ -95,7 +86,6 @@
       },
       "block_order": [
         "38c0376e-005f-4488-8043-c156d39e71e8",
-        "cef3f6cc-ee05-4e5a-921e-cab3d855ecce",
         "menu_aTbPek",
         "bf57e342-c1d2-40ef-a2fb-edc5463b13a5"
       ],
